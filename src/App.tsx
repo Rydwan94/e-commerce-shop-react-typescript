@@ -1,16 +1,20 @@
-import UserForm from "./components/UserForm";
-import UsersInfoList from "./components/UsersInfoList";
-import Context from "./context/Context";
+import { HashRouter } from "react-router-dom";
+import Navigation from "./layouts/Navigation";
+import Pages from "./layouts/Pages";
+import ProductsProvider from "./context/ProductsProvider";
 
 function App() {
   return (
-    <Context>
-      <div className="flex flex-col justify-evenly items-center w-full h-screen">
-        <h1 className="text-6xl">Users Info</h1>
-        <UserForm />
-        <UsersInfoList />
-      </div>
-    </Context>
+    <HashRouter>
+      <ProductsProvider>
+        <header className="w-full bg-slate-500">
+          <Navigation />
+        </header>
+        <main>
+          <Pages />
+        </main>
+        </ProductsProvider>
+    </HashRouter>
   );
 }
 
