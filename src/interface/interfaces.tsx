@@ -6,6 +6,7 @@ export interface Product {
     price: number;
     image: string;
     category: string;
+    isFavourite: boolean;
 }
 
 export interface Links {
@@ -17,3 +18,15 @@ export interface Menu {
     isOpenMenu: boolean;
     handleMenu: () => void;
 }
+
+export interface ProductSearchIconProps {
+    expandSearcher: boolean;
+    setExpandSearcher: React.Dispatch<React.SetStateAction<boolean>>;
+    setIsOpenCart: React.Dispatch<React.SetStateAction<boolean>>;
+  }
+
+  export interface CartIconProps{
+    isOpenCart: boolean;
+    setIsOpenCart: React.Dispatch<React.SetStateAction<boolean>>;
+    setExpandSearcher: React.Dispatch<React.SetStateAction<boolean>>;
+  }

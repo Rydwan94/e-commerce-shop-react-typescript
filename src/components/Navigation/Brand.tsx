@@ -1,7 +1,7 @@
 
 const Brand = () => {
   return (
-    <div className="h-full self-start">Brand</div>
+    <div className="absolute top-1/2 -translate-y-1/2 ">Brand</div>
   )
 }
 

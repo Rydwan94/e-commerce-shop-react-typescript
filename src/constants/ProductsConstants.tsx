@@ -10,6 +10,7 @@ export const products: Product[] = [
     price: 599.99,
     image: 'smartphone.jpg',
     category: 'Electronics',
+    isFavourite: false
   },
   {
     id: 2,
@@ -18,6 +19,7 @@ export const products: Product[] = [
     price: 1299.99,
     image: 'laptop.jpg',
     category: 'Electronics',
+    isFavourite: false
   },
   {
     id: 3,
@@ -26,6 +28,7 @@ export const products: Product[] = [
     price: 149.99,
     image: 'headphones.jpg',
     category: 'Electronics',
+    isFavourite: false
   },
   {
     id: 4,
@@ -34,6 +37,7 @@ export const products: Product[] = [
     price: 79.99,
     image: 'fitness-tracker.jpg',
     category: 'Electronics',
+    isFavourite: false
   },
   {
     id: 5,
@@ -42,6 +46,7 @@ export const products: Product[] = [
     price: 89.99,
     image: 'coffee-maker.jpg',
     category: 'Appliances',
+    isFavourite: false
   },
   {
     id: 6,
@@ -50,6 +55,7 @@ export const products: Product[] = [
     price: 199.99,
     image: 'smartwatch.jpg',
     category: 'Electronics',
+    isFavourite: false
   },
   {
     id: 7,
@@ -58,6 +64,7 @@ export const products: Product[] = [
     price: 69.99,
     image: 'wireless-earbuds.jpg',
     category: 'Electronics',
+    isFavourite: false
   },
   {
     id: 8,
@@ -66,6 +73,7 @@ export const products: Product[] = [
     price: 299.99,
     image: 'tablet.jpg',
     category: 'Electronics',
+    isFavourite: false
   },
   {
     id: 9,
@@ -74,6 +82,7 @@ export const products: Product[] = [
     price: 249.99,
     image: 'robot-vacuum.jpg',
     category: 'Appliances',
+    isFavourite: false
   },
   {
     id: 10,
@@ -82,6 +91,7 @@ export const products: Product[] = [
     price: 499.99,
     image: 'gaming-console.jpg',
     category: 'Electronics',
+    isFavourite: false
   },
   {
     id: 11,
@@ -90,6 +100,7 @@ export const products: Product[] = [
     price: 19.99,
     image: 't-shirt.jpg',
     category: 'Clothing',
+    isFavourite: false
   },
   {
     id: 12,
@@ -98,6 +109,7 @@ export const products: Product[] = [
     price: 39.99,
     image: 'jeans.jpg',
     category: 'Clothing',
+    isFavourite: false
   },
   {
     id: 13,
@@ -106,5 +118,6 @@ export const products: Product[] = [
     price: 59.99,
     image: 'sneakers.jpg',
     category: 'Clothing',
+    isFavourite: false
   },
 ];
