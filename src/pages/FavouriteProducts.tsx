@@ -1,4 +1,4 @@
-import FavouriteProductsList from "../components/ProductsPage/FavouriteProductsList"
+import FavouriteProductsList from "../components/Products/FavouriteProductsList"
 
 
 const FavouriteProducts = () => {

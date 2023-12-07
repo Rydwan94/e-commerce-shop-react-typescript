@@ -14,6 +14,11 @@ export interface Links {
     path: string;
 }
 
+export interface Document {
+    title: string;
+    content: string
+}
+
 export interface Menu {
     isOpenMenu: boolean;
     handleMenu: () => void;

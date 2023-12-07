@@ -37,7 +37,7 @@ const ProductSearchIcon = ({expandSearcher, setExpandSearcher, setIsOpenCart}: P
   </div>
   {
         
-            <div className={`flex absolute top-[52px] right-[100px]  p-2 shadow-2xl bg-white transition-all ${expandSearcher ? "animate-jump-in" : "animate-jump-out"}`}>
+            <div className={`flex absolute top-[170%] right-[10%]  p-2 shadow-2xl bg-white transition-all ${expandSearcher ? "animate-jump-in" : "animate-jump-out"}`}>
                 <input ref={inputRef} type="text" placeholder='search product....' value={searchValue} onChange={handleInput} />
                 <button onClick={handleSearchProduct} className='cursor-pointer'><IoSearchOutline size={24} color="black" /></button>
             </div>

@@ -1,18 +1,20 @@
-// src/routes/DocumentsRoute.js
-// import React from 'react';
-// import { Route, Routes } from 'react-router-dom';
-// import FAQ from '../pages/FAQ';
-// import Regulations from '../pages/Regulations';
-// import PrivacyPolicy from '../pages/PrivacyPolicy';
 
-// const DocumentsRoute = () => {
-//   return (
-//     <Routes>
-//       <Route path='faq' element={<FAQ />} />
-//       <Route path='regulations' element={<Regulations />} />
-//       <Route path='privacy-policy' element={<PrivacyPolicy />} />
-//     </Routes>
-//   );
-// };
 
-// export default DocumentsRoute;
+import { Route, Routes } from 'react-router-dom';
+import Faq from '../components/Documents/Faq';
+import Regulations from '../components/Documents/Regulations';
+import PrivacyPolicy from '../components/Documents/PrivacyPolicy';
+import DocumentsList from '../pages/DocumentsList';
+
+const DocumentsRoute = () => {
+  return (
+    <Routes>
+      <Route path='/' element={<DocumentsList />} />
+      <Route path='/faq' element={<Faq />} />
+      <Route path='/regulations' element={<Regulations />} />
+      <Route path='/privacy-policy' element={<PrivacyPolicy />} />
+    </Routes>
+  );
+};
+
+export default DocumentsRoute;
