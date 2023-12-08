@@ -32,7 +32,7 @@ const ProductsProvider: React.FC<{ children: React.ReactNode }> = ({
 
     if (!productExist) {
       setCart((prev) => [...prev, cartProduct]);
-    } else return setCart(cart.filter((item) => item.id !== cartProduct.id));
+    } 
   };
 
   const removeFromCart = (productId: number) => {

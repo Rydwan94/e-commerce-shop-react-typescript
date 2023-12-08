@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Product } from "../../interface/interfaces";
 import { useProducts } from "../../context/ProductsProvider";
 import { FaHeart, FaRegHeart } from "react-icons/fa"; // Importuj ikony serca
@@ -10,7 +11,7 @@ const SingleProduct: React.FC<Product> = ({
   price,
   image,
   category,
-  isFavourite
+  isFavourite,
 }) => {
   const { addToCart, addToFavourites, cart } = useProducts();
 
@@ -22,13 +23,13 @@ const SingleProduct: React.FC<Product> = ({
       price,
       image,
       category,
-      isFavourite
+      isFavourite,
     });
   };
 
   const handleAddToFavourites = () => addToFavourites(id);
 
-  const findProduct = cart.find(item => item.id === id);
+  const findProduct = cart.find((item) => item.id === id);
 
   return (
     <figure className="max-w-fit max-h-max p-2" key={id}>
@@ -39,7 +40,13 @@ const SingleProduct: React.FC<Product> = ({
         <p>{price} pln</p>
       </figcaption>
       <div className="flex items-center justify-between">
-        <button onClick={handleAddToCart}>{findProduct ? "Remove Product" : "Add product"}</button>
+        <button onClick={handleAddToCart}>
+          {findProduct ? (
+            <Link to={`/products/${id}`}>Details</Link>
+          ) : (
+            "Add product"
+          )}
+        </button>
         <button onClick={handleAddToFavourites}>
           {isFavourite ? (
             <FaHeart color="red" size={20} /> // Ikona serca, gdy produkt jest ulubiony

@@ -1,50 +1,80 @@
-
-import {useEffect, useRef} from 'react'
+import { useEffect, useRef } from "react";
 import { IoSearchOutline } from "react-icons/io5";
-import { useProducts } from '../../context/ProductsProvider';
-import { ProductSearchIconProps } from '../../interface/interfaces';
+import { useProducts } from "../../context/ProductsProvider";
+import { ProductSearchIconProps } from "../../interface/interfaces";
+import { useNavigate } from "react-router-dom";
 
+const ProductSearchIcon = ({
+  expandSearcher,
+  setExpandSearcher,
+  setIsOpenCart,
+}: ProductSearchIconProps) => {
+  const { searchValue, setsearchValue, searchProduct } = useProducts();
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
+  const Navigate = useNavigate();
 
-const ProductSearchIcon = ({expandSearcher, setExpandSearcher, setIsOpenCart}: ProductSearchIconProps) => {
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, [expandSearcher]);
 
-    const {searchValue, setsearchValue, searchProduct} = useProducts()
-    
+  const handleExpandSearcher = () => {
+    setExpandSearcher(!expandSearcher);
+    setIsOpenCart(false);
+  };
 
-    const inputRef = useRef<HTMLInputElement | null>(null)
+  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setsearchValue(e.target.value);
+  };
 
-    useEffect(() => {
-        inputRef.current?.focus()
-    },[expandSearcher])
-    
+  const handleSearchProduct = () => {
+    Navigate('/products')
+    searchProduct();
+  };
 
-    const handleExpandSearcher = () => {
-        setExpandSearcher(!expandSearcher)
-        setIsOpenCart(false)
+  const handleClickOutside = (e: MouseEvent) => {
+    if (
+      expandSearcher &&
+      inputRef.current &&
+      !inputRef.current.contains(e.target as Node)
+    ) {
+      setExpandSearcher(false);
     }
+  };
 
-    const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setsearchValue(e.target.value);
-    }
-    
+  useEffect(() => {
+    window.addEventListener("mousedown", handleClickOutside);
 
-    const handleSearchProduct = () => searchProduct()
+    return () => {
+      window.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [expandSearcher]);
 
   return (
-   <div className='relative'>
-     <div className="cursor-pointer" onClick={handleExpandSearcher}>
-    <IoSearchOutline size={27} color="white" />
-  </div>
-  {
-        
-            <div className={`flex absolute top-[170%] right-[10%]  p-2 shadow-2xl bg-white transition-all ${expandSearcher ? "animate-jump-in" : "animate-jump-out"}`}>
-                <input ref={inputRef} type="text" placeholder='search product....' value={searchValue} onChange={handleInput} />
-                <button onClick={handleSearchProduct} className='cursor-pointer'><IoSearchOutline size={24} color="black" /></button>
-            </div>
-        
-    }
-   </div>
-  )
-}
+    <div className="relative">
+      <div className="cursor-pointer" onClick={handleExpandSearcher}>
+        <IoSearchOutline size={27} color="white" />
+      </div>
+      {
+        <div
+          ref={inputRef}
+          className={`flex absolute top-[170%] right-[10%] p-2 shadow-2xl bg-white transition-all ${
+            expandSearcher ? "animate-jump-in" : "animate-jump-out"
+          }`}
+        >
+          <input
+            type="text"
+            placeholder="search product...."
+            value={searchValue}
+            onChange={handleInput}
+          />
+          <button onClick={handleSearchProduct} className="cursor-pointer">
+            <IoSearchOutline size={24} color="black" />
+          </button>
+        </div>
+      }
+    </div>
+  );
+};
 
-export default ProductSearchIcon
+export default ProductSearchIcon;
