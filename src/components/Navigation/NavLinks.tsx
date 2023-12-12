@@ -1,7 +1,7 @@
 // NavLinks.tsx
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { Navigation_Routes } from "../../constants/NavConstants";
+import { Navigation_Routes } from "../../Router/Routes/NavRoutes";
 
 import { Menu } from "../../interface/interfaces";
 import Icons from "./Icons";

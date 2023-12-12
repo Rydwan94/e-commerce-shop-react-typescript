@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { DocumentsNavigation_Routes } from "../constants/NavConstants";
+import { DocumentsNavigation_Routes } from "../Router/Routes/DocumentsRoutes";
 
 const DocumentsList = () => {
   return (
