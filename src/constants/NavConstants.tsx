@@ -7,11 +7,11 @@ export const Navigation_Routes:Links[] = [
     },
     {
         label: "Products",
-        path: "/products"
+        path: "products"
     },
     {
         label: "Documents",
-        path: "/documents"
+        path: "documents"
     }
 ]
 

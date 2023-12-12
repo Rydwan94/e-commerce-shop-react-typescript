@@ -12,6 +12,10 @@ const ProductSearchIcon = ({
   const { searchValue, setsearchValue, searchProduct } = useProducts();
   const inputRef = useRef<HTMLInputElement | null>(null);
 
+  useEffect(() => {
+    inputRef.current?.focus()
+  },[expandSearcher])
+
   const Navigate = useNavigate();
 
   useEffect(() => {
@@ -32,23 +36,6 @@ const ProductSearchIcon = ({
     searchProduct();
   };
 
-  const handleClickOutside = (e: MouseEvent) => {
-    if (
-      expandSearcher &&
-      inputRef.current &&
-      !inputRef.current.contains(e.target as Node)
-    ) {
-      setExpandSearcher(false);
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener("mousedown", handleClickOutside);
-
-    return () => {
-      window.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [expandSearcher]);
 
   return (
     <div className="relative">
@@ -57,12 +44,13 @@ const ProductSearchIcon = ({
       </div>
       {
         <div
-          ref={inputRef}
+          
           className={`flex absolute top-[170%] right-[10%] p-2 shadow-2xl bg-white transition-all ${
             expandSearcher ? "animate-jump-in" : "animate-jump-out"
           }`}
         >
           <input
+            ref={inputRef}
             type="text"
             placeholder="search product...."
             value={searchValue}

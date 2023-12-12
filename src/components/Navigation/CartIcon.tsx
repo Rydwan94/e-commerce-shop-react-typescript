@@ -1,7 +1,8 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { useProducts } from "../../context/ProductsProvider";
 import { IoCartOutline, IoCloseOutline } from "react-icons/io5";
 import { CartIconProps } from "../../interface/interfaces";
+import { useNavigate } from "react-router-dom";
 
 const CartIcon = ({
   isOpenCart,
@@ -12,26 +13,17 @@ const CartIcon = ({
 
   const cartInfoRef = useRef<HTMLInputElement | null>(null);
 
+  const Navigate = useNavigate();
+
   const handleOpenCart = (): void => {
     setIsOpenCart(!isOpenCart);
     setExpandSearcher(false);
   };
 
-  const handleClickOutside = (e: MouseEvent) => {
-    if (
-      isOpenCart &&
-      cartInfoRef.current &&
-      !cartInfoRef.current.contains(e.target as Node)
-    ) {
-      setIsOpenCart(false);
-    }
+  const handleGoToCart = () => {
+    Navigate("/cart");
+    setIsOpenCart(false);
   };
-
-  useEffect(() => {
-    window.addEventListener("mousedown", handleClickOutside);
-
-    return () => window.removeEventListener("mousedown", handleClickOutside);
-  }, [isOpenCart]);
 
   return (
     <div className="relative">
@@ -52,19 +44,25 @@ const CartIcon = ({
           }`}
         >
           {cart.length > 0 ? (
-            cart.map((product) => (
-              <div
-                className="flex flex-col justify-evenly items-start"
-                key={product.id}
-              >
-                <div className="flex items-center">
-                  <p>{product.name}</p>
-                  <button className="pt-1" onClick={() => removeFromCart(product.id)}>
-                    <IoCloseOutline  size={20} />
-                  </button>
+            <div>
+              {cart.map((product) => (
+                <div
+                  className="flex flex-col justify-evenly items-start"
+                  key={product.id}
+                >
+                  <div className="flex justify-between items-center min-w-full">
+                    <p>{product.name}</p>
+                    <button
+                      className="pt-1 ml-1"
+                      onClick={() => removeFromCart(product.id)}
+                    >
+                      <IoCloseOutline size={20} />
+                    </button>
+                  </div>
                 </div>
-              </div>
-            ))
+              ))}
+              <button onClick={handleGoToCart} className="bg-black text-white rounded-md p-1 mt-2">Go to cart</button>
+            </div>
           ) : (
             <p>You dont have any product in cart</p>
           )}

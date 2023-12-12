@@ -1,8 +1,9 @@
-import React from "react";
+import {useState} from "react";
 import { Link } from "react-router-dom";
 import { Product } from "../../interface/interfaces";
 import { useProducts } from "../../context/ProductsProvider";
 import { FaHeart, FaRegHeart } from "react-icons/fa"; // Importuj ikony serca
+import CartCheckout from "../../modals/CartCheckout";
 
 const SingleProduct: React.FC<Product> = ({
   id,
@@ -15,6 +16,8 @@ const SingleProduct: React.FC<Product> = ({
 }) => {
   const { addToCart, addToFavourites, cart } = useProducts();
 
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
+
   const handleAddToCart = () => {
     addToCart({
       id,
@@ -25,6 +28,9 @@ const SingleProduct: React.FC<Product> = ({
       category,
       isFavourite,
     });
+
+    setIsModalOpen(!isModalOpen)
+
   };
 
   const handleAddToFavourites = () => addToFavourites(id);
@@ -32,6 +38,7 @@ const SingleProduct: React.FC<Product> = ({
   const findProduct = cart.find((item) => item.id === id);
 
   return (
+    <>
     <figure className="max-w-fit max-h-max p-2" key={id}>
       <img src={image} alt={name} />
       <figcaption>
@@ -56,6 +63,8 @@ const SingleProduct: React.FC<Product> = ({
         </button>
       </div>
     </figure>
+    <CartCheckout isModalOpen={isModalOpen} id={id}/>
+    </>
   );
 };
 
