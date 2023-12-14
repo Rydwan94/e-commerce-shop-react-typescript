@@ -4,14 +4,14 @@ import { Links } from "../../interface/interfaces";
 export const DocumentsNavigation_Routes:Links[] = [
     {
         label: "FAQ",
-        path: "faq"
+        path: "/faq"
     },
     {
         label: "Regulations",
-        path:"regulations"
+        path:"/regulations"
     },
     {
         label: "Privacy-Policy",
-        path: "privacy-policy"
+        path: "/privacy-policy"
     }
 ]

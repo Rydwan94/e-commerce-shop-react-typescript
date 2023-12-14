@@ -35,3 +35,17 @@ export interface ProductSearchIconProps {
     setIsOpenCart: React.Dispatch<React.SetStateAction<boolean>>;
     setExpandSearcher: React.Dispatch<React.SetStateAction<boolean>>;
   }
+
+  export interface CheckoutFormData {
+    firstName: string;
+    lastName: string
+    email: string;
+    address: string;
+    phoneNumber: string;
+    comments: string
+  }
+
+  export interface SentDataModalProps {
+    dataIsSent: boolean;
+    setDataIsSent: Dispatch<SetStateAction<boolean>>;
+  }
