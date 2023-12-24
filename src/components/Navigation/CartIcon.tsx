@@ -21,7 +21,7 @@ const CartIcon = ({
   };
 
   const handleGoToCart = () => {
-    Navigate("/cart");
+    Navigate("/checkout");
     setIsOpenCart(false);
   };
 
@@ -29,7 +29,7 @@ const CartIcon = ({
     <div className="relative">
       <div>
         <button onClick={handleOpenCart} className="cursor-pointer pt-1">
-          <IoCartOutline size={30} color="white" />
+          <IoCartOutline size={30} />
         </button>
         {cart.length > 0 && (
           <div className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full px-1 animate-pulse">

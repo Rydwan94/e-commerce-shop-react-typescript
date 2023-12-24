@@ -22,24 +22,24 @@ const ProductsList: React.FC = () => {
 
   if (productsList.length) {
     return (
-      <div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
-          {displayProducts}
-        </div>
+      <>
+      <div className="grid place-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-y-10 p-10">
+        {displayProducts}
+      </div>
         <ReactPaginate
           previousLabel={"Previous"}
           nextLabel={"Next"}
           pageCount={pageCount}
           onPageChange={changePage}
-          containerClassName={"flex items-center justify-center space-x-4"} 
+          containerClassName={"flex items-center justify-center space-x-4 mt-8"} 
           previousLinkClassName={"bg-blue-500 text-white px-4 py-2 rounded"} 
           nextLinkClassName={"bg-blue-500 text-white px-4 py-2 rounded"} 
           disabledClassName={"text-gray-400 cursor-not-allowed"} 
           activeClassName={"bg-blue-700 text-white"} 
         />
-      </div>
+      </>
     );
-  } else return <h1>We dont have this product</h1>;
+  } else return <h1>We don't have this product</h1>;
 };
 
 export default ProductsList;

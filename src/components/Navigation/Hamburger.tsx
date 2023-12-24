@@ -4,17 +4,17 @@ const Hamburger = ({ isOpenMenu, handleMenu }: Menu) => {
   return (
     <button onClick={handleMenu} className="lg:hidden self-center">
       <div
-        className={`w-6 h-1 bg-black transition-all transform ${
+        className={`w-6 h-1 bg-secondTextColor transition-all transform ${
           isOpenMenu ? "rotate-45 translate-y-2" : "rotate-0 translate-y-0"
         }`}
       ></div>
       <div
-        className={`w-6 h-1 my-1 bg-black transition-all  ${
+        className={`w-6 h-1 my-1 bg-secondTextColor transition-all  ${
           isOpenMenu ? "opacity-0" : "opacity-1"
         }`}
       ></div>
       <div
-        className={`w-6 h-1 bg-black transition-all transform ${
+        className={`w-6 h-1 bg-secondTextColor transition-all transform ${
           isOpenMenu ? "-rotate-45 -translate-y-2" : "rotate-0 translate-y-0"
         }`}
       ></div>

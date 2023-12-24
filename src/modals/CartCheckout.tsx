@@ -22,7 +22,7 @@ const CartCheckout = ({ isModalOpen, id }: { isModalOpen: boolean; id: number })
   };
 
   const handleGoToCart = () => {
-    Navigate("/cart");
+    Navigate("/checkout");
     dialogRef.current?.close();
   };
 

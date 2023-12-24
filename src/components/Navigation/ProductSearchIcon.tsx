@@ -40,7 +40,7 @@ const ProductSearchIcon = ({
   return (
     <div className="relative">
       <div className="cursor-pointer" onClick={handleExpandSearcher}>
-        <IoSearchOutline size={27} color="white" />
+        <IoSearchOutline size={27} />
       </div>
       {
         <div

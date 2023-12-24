@@ -5,6 +5,8 @@ const SentDataModal = ({ dataIsSent, setDataIsSent }: SentDataModalProps) => {
   const modalRef = useRef<HTMLDialogElement | null>(null);
   const [modalTime, setModalTime] = useState<number>(100);
 
+  console.log(modalTime);
+
   useEffect(() => {
     if (dataIsSent) {
       modalRef.current?.showModal();
@@ -13,25 +15,22 @@ const SentDataModal = ({ dataIsSent, setDataIsSent }: SentDataModalProps) => {
         modalRef.current?.close();
         setDataIsSent(false);
       }, 3000);
+
+      const intervalId = setInterval(() => {
+        // Dodaj sprawdzenie, czy modalTime nie osiągnęło wartości 0
+        if (modalTime > 0) {
+          setModalTime((prev) => prev - 1);
+        }
+      }, 30);
+
+      // Zresetuj modalTime po zakończeniu interwału
+      return () => {
+        clearInterval(intervalId);
+        setModalTime(100);
+      };
     } else {
-      // Dodaj sprawdzenie, czy modalRef.current nie jest null
       modalRef.current?.close();
     }
-
-    const intervalId = setInterval(() => {
-      // Dodaj sprawdzenie, czy modalTime nie osiągnęło wartości 0
-      if (modalTime > 0) {
-        setModalTime((prev) => prev - 1);
-      } else {
-        clearInterval(intervalId);
-      }
-    }, 30);
-
-    // Zresetuj modalTime po zakończeniu interwału
-    return () => {
-      clearInterval(intervalId);
-      setModalTime(100);
-    };
   }, [dataIsSent, setDataIsSent]);
 
   const handleCloseModal = () => {
@@ -45,7 +44,10 @@ const SentDataModal = ({ dataIsSent, setDataIsSent }: SentDataModalProps) => {
     >
       <p>Your delivery has been sent</p>
       <button onClick={handleCloseModal}>Ok</button>
-      <div style={{ width: `${modalTime}%` }} className="h-2 mt-5 bg-green-400"></div>
+      <div
+        style={{ width: `${modalTime}%` }}
+        className="h-2 mt-5 bg-green-400"
+      ></div>
     </dialog>
   );
 };

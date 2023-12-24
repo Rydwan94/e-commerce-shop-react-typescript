@@ -10,7 +10,7 @@ const Icons = ({ isOpenMenu, handleMenu }: Menu) => {
   const [isOpenCart, setIsOpenCart] = useState<boolean>(false);
 
   return (
-    <div className="flex items-center self-end gap-4">
+    <div className="flex items-center self-end gap-4 text-primary max-lg:text-secondTextColor">
       <HeartIcon />
       <ProductSearchIcon
         expandSearcher={expandSearcher}

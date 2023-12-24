@@ -16,7 +16,7 @@ const HeartIcon = () => {
         {favouriteProducts.length > 0 ? (
           <FaHeart color="red" size="23" />
         ) : (
-          <FaRegHeart color="white" size="23" />
+          <FaRegHeart size="23" />
         )}
       </button>
       {favouriteProducts.length > 0 ? (

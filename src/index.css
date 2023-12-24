@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -7,4 +9,79 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+}
+
+:root {
+
+    /* colors */
+    --primary: #23A6F0;
+   
+    --secondary-1: #23856D;
+    --secondary-2: #3C403D;
+    --dark-background-color: #252B42;
+    --light-background-color:#FFFFFF;
+    --success-color:#2DC071;
+    --alert-color: #E77C40;
+    --danger-color:#E74040;
+    --hover-color: #2A7CC7;
+    --muted-color: #BDBDBD;
+    --light-gray-1: #FAFAFA;
+    --light-gray-2: #ECECEC;
+    --primary-text-color:#23A6F0;
+    --secondary-text-color-1: #40BB15;
+    --secondary-text-color-2: #3C403D;
+    --text-color: #252B42;
+    --second-text-color: #737373;
+    --light-text-color:#FFFFFF;
+    --success-text-color: #2DC071;
+    --alert-text-color: #E77C40;
+    --danger-text-color:#E74040;
+    --hover-text-color:#2A7CC7;
+    --disabled-element-text-color: #8EC2F2;
+    --muted-text-color:#BDBDBD;
+    --light-text-gray-1: #FAFAFA;
+    --light-text-gray-2: #ECECEC;
+    --faded-primary-color:#B2E3FF;
+    --faded-secondary-color-1:#B9EAA8;
+    --faded-secondary-color-2:#FFDCD1;
+    --light-background:#FFFFFF;
+    /* font */
+    --font-montserrat: 'Montserrat', sans-serif;
+
+    
+}
+
+.active {
+    color: var(--light-text-color);
+    padding: 2;
+    background-color: var(--second-text-color);
+    box-shadow: 0 3px 5px 0 var(--primary-2);
+}
+
+.customPrevArrow {
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    z-index: 10;
+    transform: scale(2.0);
+}
+
+
+.customNextArrow {
+    position: absolute;
+    top: 50%;
+    right: 5%;
+    z-index: 10;
+    transform: scale(2.0);
+    color: red;
+}
+
+@media only screen and (max-width: 768px) {
+    .customPrevArrow{
+        transform: scale(1.2);
+    }
+
+    .customNextArrow {
+        transform: scale(1.2);
+    }
 }

@@ -1,3 +1,4 @@
+import { Dispatch, SetStateAction } from "react";
 
 export interface Product {
     id: number;
@@ -7,6 +8,7 @@ export interface Product {
     image: string;
     category: string;
     isFavourite: boolean;
+    isBestseller:boolean;
 }
 
 export interface Links {
@@ -22,6 +24,7 @@ export interface Document {
 export interface Menu {
     isOpenMenu: boolean;
     handleMenu: () => void;
+    setMenuAsClosed?: () => void;
 }
 
 export interface ProductSearchIconProps {
@@ -48,4 +51,23 @@ export interface ProductSearchIconProps {
   export interface SentDataModalProps {
     dataIsSent: boolean;
     setDataIsSent: Dispatch<SetStateAction<boolean>>;
+  }
+
+  export interface FilterProductsProps {
+    categoryFilter: string;
+    setCategoryFilter: React.Dispatch<React.SetStateAction<string>>;
+    bestsellers: Product[];
+    setBestsellers: React.Dispatch<React.SetStateAction<Product[]>>;
+  }
+
+  export interface ArrowProps {
+    className?: string;
+    style?: React.CSSProperties;
+    onClick?: () => void;
+  }
+  
+  export interface ProductCategory {
+    classProp: string;
+    src: string;
+    buttonMessage: string;
   }

@@ -2,10 +2,20 @@ import { useState } from "react";
 import { Formik, ErrorMessage, Form, Field } from "formik";
 import { CheckoutFormData } from "../../interface/interfaces";
 import SentDataModal from "../../modals/SentDataModal";
+import { useProducts } from "../../context/ProductsProvider";
+import { useNavigate } from "react-router-dom";
 
 const CheckOutForm: React.FC = () => {
 
+  const {setCart} = useProducts()
+
     const [dataIsSent, setDataIsSent] = useState<boolean>(false)
+
+    const navigate = useNavigate()
+
+  const handleGoToConfimartion = () => {
+    navigate("/delivery-confirmation")
+  }
 
   const handleOnSubmit = (
     values: CheckoutFormData,
@@ -14,8 +24,9 @@ const CheckOutForm: React.FC = () => {
     console.log(values);
 
     setDataIsSent(true)
-
+    setCart([])
     resetForm();
+    handleGoToConfimartion()
   };
   const initialValues: CheckoutFormData = {
     firstName: "",
@@ -27,8 +38,8 @@ const CheckOutForm: React.FC = () => {
   };
 
   return (
-    <div>
-      <h1>Payment details</h1>
+    <div className="max-w-md mx-auto p-6 bg-white rounded-md shadow-md">
+    <h1 className="text-2xl font-bold mb-6">Payment Details</h1>
       <Formik
         initialValues={initialValues}
         validateOnBlur={false}
@@ -65,6 +76,7 @@ const CheckOutForm: React.FC = () => {
               id="firstName"
               name="firstName"
               placeholder="First Name"
+              className="mt-1 p-2 border border-gray-300 rounded-md w-full"
             />
             <ErrorMessage
               name="firstName"
@@ -79,6 +91,7 @@ const CheckOutForm: React.FC = () => {
               id="lastName"
               name="lastName"
               placeholder="Last Name"
+              className="mt-1 p-2 border border-gray-300 rounded-md w-full"
             />
             <ErrorMessage
               name="lastName"
@@ -88,7 +101,7 @@ const CheckOutForm: React.FC = () => {
           </div>
           <div>
             <label htmlFor="email">Email</label>
-            <Field type="text" id="email" name="email" placeholder="email" />
+            <Field type="text" id="email" name="email" placeholder="email" className="mt-1 p-2 border border-gray-300 rounded-md w-full"  />
             <ErrorMessage
               name="email"
               component="div"
@@ -102,6 +115,7 @@ const CheckOutForm: React.FC = () => {
               id="address"
               name="address"
               placeholder="address"
+              className="mt-1 p-2 border border-gray-300 rounded-md w-full"
             />
             <ErrorMessage
               name="address"
@@ -116,6 +130,7 @@ const CheckOutForm: React.FC = () => {
               id="phoneNumber"
               name="phoneNumber"
               placeholder="phoneNumber"
+              className="mt-1 p-2 border border-gray-300 rounded-md w-full"
             />
             <ErrorMessage
               name="phoneNumber"
@@ -130,6 +145,7 @@ const CheckOutForm: React.FC = () => {
               id="comments"
               name="comments"
               placeholder="comments"
+              className="mt-1 p-2 border border-gray-300 rounded-md w-full"
             />
             <ErrorMessage
               name="comments"
