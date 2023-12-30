@@ -53,6 +53,11 @@ export interface ProductSearchIconProps {
     setDataIsSent: Dispatch<SetStateAction<boolean>>;
   }
 
+  export interface SubscribeConfirmationProps {
+    isModalOpen: boolean;
+    setIsModalOpen: Dispatch<SetStateAction<boolean>>;
+  }
+
   export interface FilterProductsProps {
     categoryFilter: string;
     setCategoryFilter: React.Dispatch<React.SetStateAction<string>>;
@@ -70,4 +75,9 @@ export interface ProductSearchIconProps {
     classProp: string;
     src: string;
     buttonMessage: string;
+  }
+
+  export interface CategoryCardProps {
+    src: string;
+    category: string;
   }

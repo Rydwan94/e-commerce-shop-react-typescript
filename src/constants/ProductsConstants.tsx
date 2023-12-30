@@ -133,4 +133,5 @@ export const products: Product[] = [
     isFavourite: false,
     isBestseller: true
   },
+  
 ];

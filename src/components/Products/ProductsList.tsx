@@ -23,7 +23,7 @@ const ProductsList: React.FC = () => {
   if (productsList.length) {
     return (
       <>
-      <div className="grid place-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-y-10 p-10">
+      <div className="grid place-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4  max-w-7xl mx-auto gap-y-10 p-10">
         {displayProducts}
       </div>
         <ReactPaginate

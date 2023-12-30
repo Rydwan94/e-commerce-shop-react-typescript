@@ -15,7 +15,7 @@ const FavouriteProductsList = () => {
 
   if (favouriteProducts.length) {
     return (
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
+      <div className="grid place-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
         {favouriteProducts.map((product) => (
           <SingleProduct key={product.id} {...product} />
         ))}

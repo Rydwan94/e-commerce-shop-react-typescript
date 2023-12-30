@@ -47,7 +47,7 @@ const SingleProduct: React.FC<Product> = ({
 
   return (
     <>
-      <figure className="group w-[350px] bg-lightGray1 shadow-lg rounded-xl">
+      <figure className="group w-[80%] lg:w-[90%] bg-lightGray1 shadow-lg rounded-xl">
         <div className="relative overflow-hidden rounded-xl">
           {isBestseller && <div className=" absolute top-3 left-2 p-3 bg-dangerColor text-lightTextColor rounded-2xl">Bestseller</div>}
           <img className="aspect-square object-cover" src={image} alt={name} />

@@ -17,7 +17,7 @@ const Bestsellers = () => {
           Problems trying to resolve the conflict between
         </p>
      
-      <div className="flex flex-wrap justify-between items-center w-full gap-16 mt-10">
+      <div className="grid place-items-center lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 w-full gap-16 mt-10">
         {bestsellers.map(product => <SingleProduct key={product.id} {...product} />)}
       </div>
     </div>
