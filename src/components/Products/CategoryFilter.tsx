@@ -34,8 +34,8 @@ const CategoryFilter = () => {
           ))}
         </div>
       </div>
-      <div className="flex justify-evenly">
-        <p className="text-textColor">Showing all {productsList.length} results</p>
+      <div className="flex justify-evenly max-md:flex-col-reverse items-center">
+        <p className="text-textColor max-md:mt-8">Showing all {productsList.length} results</p>
         <div>
           <select className="p-3 text-secondTextColor bg-[#F9F9F9] rounded-lg  focus:outline-none" onChange={handleOnChangeCategory}>
             <option value="All">All Products</option>
@@ -43,7 +43,7 @@ const CategoryFilter = () => {
             <option value="Appliances">Appliances</option>
             <option value="Clothes">Clothes</option>
           </select>
-          <button className="p-2 bg-primary text-lightTextColor rounded-lg ml-3" onClick={handleShowFilteredProducts}>Filter</button>
+          <button className="p-2 bg-primary text-lightTextColor rounded-lg ml-3 hover:bg-hoverColor transition-all" onClick={handleShowFilteredProducts}>Filter</button>
         </div>
       </div>
     </>

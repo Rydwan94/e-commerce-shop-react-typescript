@@ -1,11 +1,15 @@
 import { useNavigate } from 'react-router-dom'
 import jeans from '../../assets/Images/HomePage/jeans.png'
+import { useProducts } from '../../context/ProductsProvider'
+import { products } from '../../constants/ProductsConstants'
 
 const ThirdBanner = () => {
 
+  const {setProductsList} = useProducts()
     const navigate = useNavigate()
 
     const viewProduct = () => {
+      setProductsList(products)
         navigate(`/products/${12}`)
     }
 

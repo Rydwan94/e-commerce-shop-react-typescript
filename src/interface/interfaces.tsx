@@ -9,6 +9,8 @@ export interface Product {
     category: string;
     isFavourite: boolean;
     isBestseller:boolean;
+    stock:number;
+    orderedQuantity: number
 }
 
 export interface Links {
@@ -80,4 +82,10 @@ export interface ProductSearchIconProps {
   export interface CategoryCardProps {
     src: string;
     category: string;
+  }
+
+  export interface CartCheckoutProps {
+    isModalOpen: boolean;
+    setIsModalOpen: Dispatch<SetStateAction<boolean>>;
+    id: number;
   }

@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { useProducts } from "../../context/ProductsProvider";
-import { IoCartOutline, IoCloseOutline } from "react-icons/io5";
+import { IoCartOutline } from "react-icons/io5";
 import { CartIconProps } from "../../interface/interfaces";
 import { useNavigate } from "react-router-dom";
 
@@ -9,7 +9,7 @@ const CartIcon = ({
   setIsOpenCart,
   setExpandSearcher,
 }: CartIconProps) => {
-  const { cart, removeFromCart } = useProducts();
+  const { cart } = useProducts();
 
   const cartInfoRef = useRef<HTMLInputElement | null>(null);
 
@@ -21,9 +21,13 @@ const CartIcon = ({
   };
 
   const handleGoToCart = () => {
-    Navigate("/checkout");
+    Navigate("/cart");
     setIsOpenCart(false);
   };
+
+  const cartSummary = cart.reduce((initalValue, currentProduct)=> {
+    return initalValue + currentProduct.price * currentProduct.orderedQuantity
+  }, 0) 
 
   return (
     <div className="relative">
@@ -47,21 +51,32 @@ const CartIcon = ({
             <div>
               {cart.map((product) => (
                 <div
-                  className="flex flex-col justify-evenly items-start"
+                  className="flex flex-col justify-evenly items-start border-b"
                   key={product.id}
                 >
                   <div className="flex justify-between items-center min-w-full">
                     <p>{product.name}</p>
-                    <button
-                      className="pt-1 ml-1"
-                      onClick={() => removeFromCart(product.id)}
-                    >
-                      <IoCloseOutline size={20} />
-                    </button>
+                    <div className="ml-4">
+                      <p className="text-textColor">
+                        Qunatity:{" "}
+                        <span className="font-bold">
+                          {product.orderedQuantity}
+                        </span>
+                      </p>
+                      <p>Price: {product.price.toFixed(2) / product.orderedQuantity}</p>
+                    </div>
                   </div>
                 </div>
               ))}
-              <button onClick={handleGoToCart} className="bg-black text-white rounded-md p-1 mt-2">Go to cart</button>
+              <div className="flex items-center">
+              <button
+                onClick={handleGoToCart}
+                className="bg-black text-white rounded-md p-1 mt-2"
+              >
+                Go to cart
+              </button>
+              <p>Sum : {cartSummary.toFixed(2)}</p>
+              </div>
             </div>
           ) : (
             <p>You dont have any product in cart</p>

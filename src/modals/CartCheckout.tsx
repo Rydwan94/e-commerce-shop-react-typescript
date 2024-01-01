@@ -1,28 +1,42 @@
-import React, { useEffect, useRef } from "react";
-import { useProducts } from "../context/ProductsProvider";
-import { useNavigate } from "react-router-dom";
-import brand from "../assets/Images/Brand/brand.png";
+import { useEffect, useRef } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { CartCheckoutProps } from "../interface/interfaces";
 
-const CartCheckout = ({ isModalOpen, id }: { isModalOpen: boolean; id: number }) => {
-  const { productsList } = useProducts();
+import { useProducts } from "../context/ProductsProvider";
+
+const CartCheckout = ({
+  isModalOpen,
+  setIsModalOpen,
+  id,
+}: CartCheckoutProps) => {
   const dialogRef = useRef<HTMLDialogElement | null>(null);
+  const { productsList } = useProducts();
   const Navigate = useNavigate();
+  const location = useLocation();
 
   const filteredProduct = productsList.find((product) => product.id === id);
 
   useEffect(() => {
     if (isModalOpen && dialogRef.current) {
       dialogRef.current.showModal();
-    }
+    } else dialogRef.current?.close();
   }, [isModalOpen]);
 
   const handleCloseModal = () => {
-    dialogRef.current?.close();
+    setIsModalOpen(false);
+  };
+
+  const handleGoToDetails = () => {
+    if (location.pathname.startsWith("/")) {
+      Navigate(`/products/${filteredProduct?.id}`);
+    } else if (location.pathname.startsWith("/products")) {
+      Navigate(`/${filteredProduct?.id}`);
+    }
+    setIsModalOpen(false);
   };
 
   const handleGoToCart = () => {
-    Navigate("/checkout");
-    dialogRef.current?.close();
+    Navigate("/cart");
   };
 
   return (
@@ -36,20 +50,28 @@ const CartCheckout = ({ isModalOpen, id }: { isModalOpen: boolean; id: number })
             <img src={filteredProduct.image} alt="brand" className="mb-2" />
             <h2 className="text-lg font-bold mt-2">{filteredProduct.name}</h2>
             <p className="text-gray-600 mt-2">{filteredProduct.description}</p>
-            <p className="text-lg font-bold mt-2">${filteredProduct.price.toFixed(2)}</p>
+            <p className="text-lg font-bold mt-2">
+              ${filteredProduct.price.toFixed(2)}
+            </p>
           </div>
-          <div className="flex justify-evenly">
+          <div className="flex flex-col justify-evenly">
             <button
               onClick={handleCloseModal}
-              className="bg-primary text-white px-4 py-2 rounded-md hover:bg-hoverColor focus:outline-none"
+              className="bg-primary text-white p-2 rounded-md hover:bg-hoverColor focus:outline-none"
             >
               Close
             </button>
             <button
-              onClick={handleGoToCart}
-              className="bg-primary text-white px-4 py-2 rounded-md hover:bg-hoverColor focus:outline-none"
+              onClick={handleGoToDetails}
+              className="bg-primary text-white p-2 mt-3 rounded-md hover:bg-hoverColor focus:outline-none"
             >
-              Go to Cart
+              Check details
+            </button>
+            <button
+              onClick={handleGoToCart}
+              className="bg-primary text-white p-2 mt-3 rounded-md hover:bg-hoverColor focus:outline-none"
+            >
+              Check cart
             </button>
           </div>
         </>

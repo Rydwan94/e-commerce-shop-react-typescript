@@ -14,7 +14,9 @@ const SingleProduct: React.FC<Product> = ({
   image,
   category,
   isFavourite,
-  isBestseller
+  isBestseller,
+  stock,
+  orderedQuantity
 }) => {
   const { addToCart, addToFavourites, cart } = useProducts();
 
@@ -35,15 +37,18 @@ const SingleProduct: React.FC<Product> = ({
       image,
       category,
       isFavourite,
-      isBestseller
+      isBestseller,
+      stock,
+      orderedQuantity
     });
 
-    setIsModalOpen(!isModalOpen);
+    setIsModalOpen(true);
   };
 
   const handleAddToFavourites = () => addToFavourites(id);
 
   const findProduct = cart.find((item) => item.id === id);
+
 
   return (
     <>
@@ -82,7 +87,7 @@ const SingleProduct: React.FC<Product> = ({
           </div>
         </figcaption>
       </figure>
-      <CartCheckout isModalOpen={isModalOpen} id={id} />
+      <CartCheckout isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} id={id} />
     </>
   );
 };

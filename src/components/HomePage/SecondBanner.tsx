@@ -1,13 +1,17 @@
 
 import { useNavigate } from 'react-router-dom'
 import BannerProductImg from '../../assets/Images/HomePage/SecondBannerProduct.png'
+import { useProducts } from '../../context/ProductsProvider'
+import { products } from '../../constants/ProductsConstants'
 
 
 const SecondBanner = () => {
 
+    const {setProductsList} = useProducts()
     const navigate = useNavigate()
 
     const handleViewProduct = () => {
+        setProductsList(products)
         navigate(`/products/${11}`)
         
     }   

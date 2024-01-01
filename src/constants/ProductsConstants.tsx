@@ -11,7 +11,9 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1634403665481-74948d815f03?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     category: 'Electronics',
     isFavourite: false,
-    isBestseller: true
+    isBestseller: true,
+    stock: 10,
+    orderedQuantity: 1
   },
   {
     id: 2,
@@ -21,7 +23,9 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     category: 'Electronics',
     isFavourite: false,
-    isBestseller: false
+    isBestseller: false,
+    stock: 15,
+    orderedQuantity: 1
   },
   {
     id: 3,
@@ -31,7 +35,9 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     category: 'Electronics',
     isFavourite: false,
-    isBestseller: false
+    isBestseller: false,
+    stock: 20,
+    orderedQuantity: 1
   },
   {
     id: 4,
@@ -41,7 +47,9 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1576243345690-4e4b79b63288?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     category: 'Electronics',
     isFavourite: false,
-    isBestseller: true
+    isBestseller: true,
+    stock: 15,
+    orderedQuantity: 1
   },
   {
     id: 5,
@@ -51,7 +59,9 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1593369196682-6d8ec9ff3ae0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     category: 'Appliances',
     isFavourite: false,
-    isBestseller: true
+    isBestseller: true,
+    stock: 12,
+    orderedQuantity: 1
   },
   {
     id: 6,
@@ -61,7 +71,9 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1617625802912-cde586faf331?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     category: 'Electronics',
     isFavourite: false,
-    isBestseller: true
+    isBestseller: true,
+    stock: 18,
+    orderedQuantity: 1
   },
   {
     id: 7,
@@ -71,7 +83,9 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1590658006821-04f4008d5717?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     category: 'Electronics',
     isFavourite: false,
-    isBestseller: false
+    isBestseller: false,
+    stock: 25,
+    orderedQuantity: 1
   },
   {
     id: 8,
@@ -81,7 +95,9 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1527698266440-12104e498b76?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     category: 'Electronics',
     isFavourite: false,
-    isBestseller: false
+    isBestseller: false,
+    stock: 8,
+    orderedQuantity: 1
   },
   {
     id: 9,
@@ -91,7 +107,9 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1603618090561-412154b4bd1b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     category: 'Appliances',
     isFavourite: false,
-    isBestseller: false
+    isBestseller: false,
+    stock: 10,
+    orderedQuantity: 1
   },
   {
     id: 10,
@@ -101,7 +119,9 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1607853202273-797f1c22a38e?q=80&w=2127&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     category: 'Electronics',
     isFavourite: false,
-    isBestseller: false
+    isBestseller: false,
+    stock: 5,
+    orderedQuantity: 1
   },
   {
     id: 11,
@@ -111,7 +131,9 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1576566588028-4147f3842f27?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     category: 'Clothes',
     isFavourite: false,
-    isBestseller: true
+    isBestseller: true,
+    stock: 30,
+    orderedQuantity: 1
   },
   {
     id: 12,
@@ -121,7 +143,9 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     category: 'Clothes',
     isFavourite: false,
-    isBestseller: false
+    isBestseller: false,
+    stock: 20,
+    orderedQuantity: 1
   },
   {
     id: 13,
@@ -131,7 +155,9 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1608667508764-33cf0726b13a?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     category: 'Clothes',
     isFavourite: false,
-    isBestseller: true
+    isBestseller: true,
+    stock: 25,
+    orderedQuantity: 1
   },
   
 ];

@@ -4,6 +4,8 @@ import { products } from "../constants/ProductsConstants";
 import { useFilter } from "./FilterProductsProvider";
 
 interface ProductsContextProps {
+  currentPrice: number;
+  setCurrentPrice:React.Dispatch<React.SetStateAction<number>>
   cart: Product[];
   setCart: React.Dispatch<React.SetStateAction<Product[]>>;
   productsList: Product[];
@@ -29,6 +31,8 @@ const ProductsProvider: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   const { setBestsellers } = useFilter();
 
+  const [currentPrice, setCurrentPrice] = useState<number>(0)
+
   const [cart, setCart] = useState<Product[]>(() => {
     const storedCart = localStorage.getItem(CART_STORAGE_KEY);
     return storedCart ? JSON.parse(storedCart) : [];
@@ -36,8 +40,8 @@ const ProductsProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const [productsList, setProductsList] = useState<Product[]>(() => {
     const initialProductsList = localStorage.getItem("productsList");
-    return initialProductsList ? JSON.parse(initialProductsList) : products }
-  );
+    return initialProductsList ? JSON.parse(initialProductsList) : products;
+  });
   const [favouriteProducts, setFavouriteProducts] = useState<Product[]>(() => {
     const storedFavourites = localStorage.getItem(FAVOURITES_STORAGE_KEY);
     return storedFavourites ? JSON.parse(storedFavourites) : [];
@@ -49,9 +53,11 @@ const ProductsProvider: React.FC<{ children: React.ReactNode }> = ({
   }, [cart]);
 
   useEffect(() => {
-    localStorage.setItem(FAVOURITES_STORAGE_KEY, JSON.stringify(favouriteProducts));
+    localStorage.setItem(
+      FAVOURITES_STORAGE_KEY,
+      JSON.stringify(favouriteProducts)
+    );
   }, [favouriteProducts]);
-
 
   useEffect(() => {
     localStorage.setItem("productsList", JSON.stringify(productsList));
@@ -59,7 +65,7 @@ const ProductsProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const addToCart = (cartProduct: Product) => {
     const productExist = cart.find((item) => item.id === cartProduct.id);
-
+   
     if (!productExist) {
       setCart((prev) => [...prev, cartProduct]);
     }
@@ -68,6 +74,14 @@ const ProductsProvider: React.FC<{ children: React.ReactNode }> = ({
   const removeFromCart = (productId: number) => {
     const newProducts = cart.filter((product) => product.id !== productId);
     setCart(newProducts);
+
+    // setProductsList((prev) =>
+    //   prev.map((item) =>
+    //     item.id === productId
+    //       ? { ...item, orderedQuantity: (item.orderedQuantity = 0) }
+    //       : item
+    //   )
+    // );
   };
 
   const addToFavourites = (productId: number) => {
@@ -79,7 +93,9 @@ const ProductsProvider: React.FC<{ children: React.ReactNode }> = ({
       if (product.id === productId) {
         product.isFavourite = !product.isFavourite;
         setProductsList(newDataofProducts);
-        setBestsellers(newDataofProducts.filter(product => product.isBestseller))
+        setBestsellers(
+          newDataofProducts.filter((product) => product.isBestseller)
+        );
         if (product.isFavourite) {
           setFavouriteProducts([...favouritesProducts, product]);
         } else if (!product.isFavourite) {
@@ -92,9 +108,8 @@ const ProductsProvider: React.FC<{ children: React.ReactNode }> = ({
   };
 
   const searchProduct = () => {
-    const filteredProducts = products.filter(
-      (product) =>
-        product.name.toLowerCase().includes(searchValue.toLowerCase())
+    const filteredProducts = products.filter((product) =>
+      product.name.toLowerCase().includes(searchValue.toLowerCase())
     );
 
     setProductsList(filteredProducts);
@@ -103,6 +118,8 @@ const ProductsProvider: React.FC<{ children: React.ReactNode }> = ({
   return (
     <ProductsContext.Provider
       value={{
+        currentPrice,
+        setCurrentPrice,
         cart,
         setCart,
         productsList,
@@ -125,9 +142,7 @@ export const useProducts = () => {
   const context = useContext(ProductsContext);
 
   if (!context) {
-    throw new Error(
-      "useProducts must be used within a ProductsProvider"
-    );
+    throw new Error("useProducts must be used within a ProductsProvider");
   }
   return context;
 };

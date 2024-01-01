@@ -80,6 +80,10 @@ html{
     color: red;
 }
 
+:disabled {
+    background-color: var(--muted-color);
+}
+
 @media only screen and (max-width: 768px) {
     .customPrevArrow{
         transform: scale(1.2);

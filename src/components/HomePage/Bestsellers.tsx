@@ -6,6 +6,8 @@ const Bestsellers = () => {
     
     const {bestsellers} = useFilter()
 
+    console.log(bestsellers)
+
   return (
     <div className="flex flex-col items-center max-w-7xl mx-auto py-20 px-10 ">
       

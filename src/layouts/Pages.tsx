@@ -8,6 +8,7 @@ import ErrorPage from "../pages/ErrorPage";
 import Documents from "../components/Documents/Documents";
 import CheckOutForm from "../pages/CheckOut/CheckOut";
 import OrderConfirmation from "../pages/CheckOut/OrderConfirmation";
+import CartPage from "../pages/Cart/CartPage";
 
 const Pages = () => {
   return (
@@ -17,6 +18,7 @@ const Pages = () => {
         <Route path="/products" element={<Products />} />
         <Route path="/products/:id" element={<ProductDetails />} />
         <Route path="/favourites" element={<FavouriteProducts />} />
+        <Route path="/cart" element={<CartPage />} />
         <Route path="/checkout" element={<CheckOutForm/>}/>
         <Route path="/delivery-confirmation" element={<OrderConfirmation />} />
         <Route path="/documents/*" element={<Documents />} />
