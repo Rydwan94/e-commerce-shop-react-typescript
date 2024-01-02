@@ -25,7 +25,7 @@ const SingleProduct: React.FC<Product> = ({
   const navigate = useNavigate()
 
   const viewProductDetails = () => {
-    navigate(`/products/${id}`)
+    navigate(`/products/${id}/description`)
   }
  
   const handleAddToCart = () => {
@@ -72,7 +72,7 @@ const SingleProduct: React.FC<Product> = ({
           <div className="flex items-center justify-between pt-2">
             <button className="border-2 border-primary p-2 text-primary rounded-full" onClick={handleAddToCart}>
               {findProduct ? (
-                <Link to={`/products/${id}`}>Details</Link>
+                <Link to={`/products/${id}/description`}>Details</Link>
               ) : (
                 "Add product"
               )}

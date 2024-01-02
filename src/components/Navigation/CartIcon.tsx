@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useProducts } from "../../context/ProductsProvider";
 import { IoCartOutline } from "react-icons/io5";
 import { CartIconProps } from "../../interface/interfaces";
@@ -9,15 +9,25 @@ const CartIcon = ({
   setIsOpenCart,
   setExpandSearcher,
 }: CartIconProps) => {
-  const { cart } = useProducts();
+  const { cart, currentPrice, setCurrentPrice,addToCart } = useProducts();
 
   const cartInfoRef = useRef<HTMLInputElement | null>(null);
 
   const Navigate = useNavigate();
 
+  useEffect(() => {
+    const cartSummary = cart.reduce((initalValue, currentProduct) => {
+      console.log(currentProduct.price )
+      return initalValue + (currentProduct.price /currentProduct.orderedQuantity) * currentProduct.orderedQuantity;
+    }, 0);
+
+    setCurrentPrice(cartSummary);
+  },[addToCart])
+
   const handleOpenCart = (): void => {
     setIsOpenCart(!isOpenCart);
     setExpandSearcher(false);
+    
   };
 
   const handleGoToCart = () => {
@@ -25,9 +35,8 @@ const CartIcon = ({
     setIsOpenCart(false);
   };
 
-  const cartSummary = cart.reduce((initalValue, currentProduct)=> {
-    return initalValue + currentProduct.price * currentProduct.orderedQuantity
-  }, 0) 
+ 
+
 
   return (
     <div className="relative">
@@ -54,7 +63,7 @@ const CartIcon = ({
                   className="flex flex-col justify-evenly items-start border-b"
                   key={product.id}
                 >
-                  <div className="flex justify-between items-center min-w-full">
+                  <div className="flex justify-between items-center min-w-full py-2">
                     <p>{product.name}</p>
                     <div className="ml-4">
                       <p className="text-textColor">
@@ -63,19 +72,19 @@ const CartIcon = ({
                           {product.orderedQuantity}
                         </span>
                       </p>
-                      <p>Price: {product.price.toFixed(2) / product.orderedQuantity}</p>
+                      <p>Price: {product.price.toFixed(2)}</p>
                     </div>
                   </div>
                 </div>
               ))}
-              <div className="flex items-center">
+              <div className="flex flex-col-reverse items-center pt-4">
               <button
                 onClick={handleGoToCart}
-                className="bg-black text-white rounded-md p-1 mt-2"
+                className="bg-primary text-white rounded-md p-1 mt-2 hover:bg-hoverColor transition-alll"
               >
                 Go to cart
               </button>
-              <p>Sum : {cartSummary.toFixed(2)}</p>
+              <p>Sum : <span className="font-bold">{currentPrice.toFixed(2)}</span></p>
               </div>
             </div>
           ) : (

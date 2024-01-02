@@ -42,7 +42,7 @@ const CartCheckout = ({
   return (
     <dialog
       ref={dialogRef}
-      className={`fixed rounded-md shadow-md top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 max-w-[30%] p-4 animate-fade-in-down`}
+      className={`fixed max-md:max-w-[50%] rounded-md shadow-md top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 max-w-[30%] p-4 animate-fade-in-down`}
     >
       {filteredProduct && (
         <>
