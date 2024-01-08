@@ -8,7 +8,6 @@ const CategoryFilter = () => {
   const { categoryFilter, setCategoryFilter } = useFilter();
   const { productsList, setProductsList } = useProducts();
 
-
   const handleOnChangeCategory = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setCategoryFilter(e.target.value);
   };
@@ -16,6 +15,8 @@ const CategoryFilter = () => {
   const handleShowFilteredProducts = () => {
     if (categoryFilter === "All") {
       setProductsList(products);
+    } else if (categoryFilter === "") {
+      return null;
     } else {
       setProductsList(
         products.filter((product) => product.category === categoryFilter)
@@ -23,27 +24,38 @@ const CategoryFilter = () => {
     }
   };
 
-  console.log(categoryFilter);
-
   return (
     <>
-      <div className=" my-11 bg-lightGray2 py-16">
-        <div className="flex items-center max-md:flex-col gap-5 max-w-7xl mx-auto px-9">
+      <div className="my-11 bg-lightGray2 lg:p-16 max-md:p-10 md:p-10 ">
+        <div className="flex lg:justify-center space-x-4 snap-x snap-mandatory overflow-x-scroll md:no-scrollbar ">
           {categoryCards.map((item, i) => (
             <CategoryCard key={i} {...item} />
           ))}
         </div>
       </div>
       <div className="flex justify-evenly max-md:flex-col-reverse items-center">
-        <p className="text-textColor max-md:mt-8">Showing all {productsList.length} results</p>
+        <p className="text-textColor max-md:mt-8">
+          Showing all {productsList.length} results
+        </p>
         <div>
-          <select className="p-3 text-secondTextColor bg-[#F9F9F9] rounded-lg  focus:outline-none" onChange={handleOnChangeCategory}>
+          <select
+            className="p-3 text-secondTextColor bg-[#F9F9F9] rounded-lg  focus:outline-none"
+            onChange={handleOnChangeCategory}
+          >
+            <option hidden value="">
+              Select an option
+            </option>
             <option value="All">All Products</option>
             <option value="Electronics">Electronics</option>
             <option value="Appliances">Appliances</option>
             <option value="Clothes">Clothes</option>
           </select>
-          <button className="p-2 bg-primary text-lightTextColor rounded-lg ml-3 hover:bg-hoverColor transition-all" onClick={handleShowFilteredProducts}>Filter</button>
+          <button
+            className="p-2 bg-primary text-lightTextColor rounded-lg ml-3 hover:bg-hoverColor transition-all"
+            onClick={handleShowFilteredProducts}
+          >
+            Filter
+          </button>
         </div>
       </div>
     </>

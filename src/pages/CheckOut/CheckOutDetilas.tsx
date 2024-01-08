@@ -1,32 +1,43 @@
 import { useProducts } from "../../context/ProductsProvider";
 
-const CheckOutDetilas = () => {
+const CheckOutDetilas = (finalPrice: { finalPrice: number }) => {
   const { cart } = useProducts();
 
-  const totalPrice = cart.reduce((total, item) => total + item.price, 0);
-
   return (
-    <div className="self-center">
-      <table className="min-w-full border border-gray-300 divide-y divide-gray-300">
-        <thead>
-          <tr className="bg-gray-200">
-            <th className="py-2 px-4">Image</th>
-            <th className="py-2 px-4">Name</th>
-            <th className="py-2 px-4">Price</th>
-          </tr>
-        </thead>
-        <tbody>
-          {cart.map((item) => (
-            <tr key={item.id}>
-              <td className="py-2 px-4 text-center">{item.image}</td>
-              <td className="py-2 px-4 text-center">{item.name}</td>
-              <td className="py-2 px-4 text-center">{item.price}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      <div className="text-center font-bold text-xl">
-        Total Price: {totalPrice.toFixed(2)} PLN
+    <div className="self-start basis-1/2 max-lg:w-full p-3 bg-lightGray1 rounded-lg max-md:text-xs">
+      <h3>Your Order</h3>
+      <div>
+        {cart.map((item) => (
+          <div
+            key={item.id}
+            className="flex justify-between items-center border-b px-2 py-4"
+          >
+            <div className="flex items-center gap-2 ">
+              <div className=" overflow-hidden rounded-xl h-[100px] w-[200px] max-md:w-[70px]">
+                <img
+                  className="object-bottom"
+                  src={item.image}
+                  alt={`${item.name} picture`}
+                />
+              </div>
+              <p>
+                Name: <span className="font-bold">{item.name}</span>
+              </p>
+            </div>
+            <div className="flex flex-col items-center min-w-fit">
+              <p>
+                Order quantity:{" "}
+                <span className="font-bold">{item.orderedQuantity}</span>
+              </p>
+              <p>
+                <span className="font-bold">{item.price.toFixed(2)} PLN</span>
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div className="py-5 text-center">
+        <p className="text-xl">Summary: <span className="font-bold text-dangerTextColor">{finalPrice.finalPrice.toFixed(2)}</span></p>
       </div>
     </div>
   );

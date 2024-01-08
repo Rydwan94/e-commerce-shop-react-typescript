@@ -4,22 +4,27 @@ import { FiPlus, FiMinus } from "react-icons/fi";
 import { useProducts } from "../../context/ProductsProvider";
 import ProductDetailsPages from "../../pages/ProductDetails/ProductDetailsPages";
 import ProductDetailsNav from "./ProductDetailsNav";
+import CartCheckout from "../../modals/CartCheckout";
+import { useState } from "react";
+import { Product } from "../../interface/interfaces";
+import RemoveProductModal from "../../modals/RemoveProductModal";
 
 const ProductDetails: React.FC = () => {
   const { productsList, cart, setProductsList, addToCart, removeFromCart } =
     useProducts();
 
+  const [openModalFromDetails, setOpenModalFromDetails] = useState(false);
+
+  const [removeProductModal, setRemoveProductModal] = useState(false);
+
   const { id } = useParams();
   const productId = parseInt(id || "", 10);
-
 
   const Navigate = useNavigate();
 
   const product = productsList.find((p) => p.id === productId);
 
   const productExistInCart = cart.find((item) => item.id === product?.id);
-
-  console.log(productExistInCart);
 
   const handleRiseQuantity = () => {
     setProductsList((prevProductsList) =>
@@ -49,8 +54,20 @@ const ProductDetails: React.FC = () => {
     );
   };
 
+  const removeProductFromCart = (id: number) => {
+    removeFromCart(id);
+
+    setRemoveProductModal(true);
+  };
+
   const handleGoToCart = () => {
     Navigate("/cart");
+  };
+
+  const handleAddToCart = (product: Product) => {
+    addToCart(product);
+
+    setOpenModalFromDetails(true);
   };
 
   if (!product) {
@@ -64,13 +81,13 @@ const ProductDetails: React.FC = () => {
           <img
             src={product.image}
             alt={product.name}
-            className="w-[30%] max-md:w-[50%] rounded-lg"
+            className="w-[30%] max-md:w-[50%] md:w-[40%] rounded-lg md:mr-7"
           />
           <div className="flex flex-col justify-between max-md:items-center max-md:mt-7">
             <div className="max-md:flex max-md:flex-col max-md:items-center">
               <h2 className="text-2xl font-semibold ">{product.name}</h2>
               <p className="text-lg font-bold text-primaryTextColor max-md:mt-5 ">
-                {product.price.toFixed(2)} PLN
+                {product.price?.toFixed(2)} PLN
               </p>
               <p className="max-md:mt-2 ">
                 Availability :{" "}
@@ -97,25 +114,28 @@ const ProductDetails: React.FC = () => {
                 </button>
               </div>
             </div>
-            <div className="flex items-center max-md:mt-5 ">
+            <div className="flex items-center max-md:mt-5 md:mt-5 ">
               {productExistInCart ? (
                 <button
                   className="bg-dangerColor p-3 text-white rounded-lg hover:bg-red-700 transition-all "
-                  onClick={() => removeFromCart(product.id)}
+                  onClick={() => removeProductFromCart(product.id)}
                 >
                   Remove from cart
                 </button>
               ) : (
                 <button
                   className="bg-primary p-3 text-white rounded-lg hover:bg-hoverColor transition-all "
-                  onClick={() => addToCart(product)}
+                  onClick={() => handleAddToCart(product)}
                 >
                   Add to cart
                 </button>
               )}
               <button
+                disabled={cart.length === 0}
                 onClick={handleGoToCart}
-                className="bg-primary p-3 text-white ml-7 rounded-lg hover:bg-hoverColor transition-all"
+                className={`bg-primary p-3 text-white ml-7 rounded-lg transition-all ${
+                  cart.length > 0 && "hover:bg-hoverColor"
+                }`}
               >
                 Go to cart
               </button>
@@ -126,7 +146,19 @@ const ProductDetails: React.FC = () => {
 
       <ProductDetailsNav id={productId} />
 
-      <ProductDetailsPages />
+      <ProductDetailsPages productId={productId} product={product} />
+
+      <CartCheckout
+        isModalOpen={openModalFromDetails}
+        setIsModalOpen={setOpenModalFromDetails}
+        id={product.id}
+      />
+      {removeProductModal && (
+        <RemoveProductModal
+          removeProductModal={removeProductModal}
+          setRemoveProductModal={setRemoveProductModal}
+        />
+      )}
     </div>
   );
 };

@@ -20,9 +20,9 @@ const CategoryCard = ({ src, category }: CategoryCardProps) => {
 
 
   return (
-    <div className="relative overflow-hidden w-[400px] max-md:w-[300px] cursor-pointer min-h-fit rounded-lg" onClick={showCategory}>
+    <div onClick={showCategory}  className="relative overflow-hidden max-md:min-w-[100%] lg:w-[20%] cursor-pointer rounded-lg snap-always snap-center " >
       <img
-        className="aspect-square object-cover brightness-75  hover:scale-125 transition-all"
+        className="aspect-square object-cover brightness-75 hover:scale-125 transition-all"
         src={src}
         alt={`${category} image`}
       />

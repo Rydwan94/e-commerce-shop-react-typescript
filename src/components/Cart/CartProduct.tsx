@@ -1,15 +1,16 @@
-import { FiPlus, FiMinus, FiTrash2 } from "react-icons/fi"; // Zaimportuj odpowiednie ikony z react-icons
+import { FiPlus, FiMinus, FiTrash2 } from "react-icons/fi";
 import { useProducts } from "../../context/ProductsProvider";
-import { Product } from "../../interface/interfaces";
+import { CartProductProps } from "../../interface/interfaces";
 
-const CartProduct: React.FC<Product> = ({
+const CartProduct: React.FC<CartProductProps> = ({
   id,
   name,
   image,
   stock,
   orderedQuantity,
+  handleRemoveFromCart,
 }) => {
-  const { removeFromCart, setCart } = useProducts();
+  const { setCart } = useProducts();
 
   const handleRiseQuantity = () => {
     setCart((prev) =>
@@ -40,37 +41,37 @@ const CartProduct: React.FC<Product> = ({
   };
 
   return (
-    <div className="flex items-center justify-between  border-b p-4">
-      <img
-        className="max-w-[10%] aspect-square object-cover rounded-lg"
-        src={image}
-        alt={`${image} picture`}
-      />
-      <p>{name}</p>
-      <div className="flex items-center">
-        <button
-          disabled={orderedQuantity === 1}
-          onClick={handleReduceQuantity}
-          className="p-2 bg-white rounded-full hover:shadow-lg transition-shadow"
-        >
-          <FiMinus />
-        </button>
-        <span className=" px-9">{orderedQuantity}</span>
-        <button
-          disabled={orderedQuantity === stock}
-          onClick={handleRiseQuantity}
-          className="p-2 bg-white rounded-full hover:shadow-lg transition-shadow"
-        >
-          <FiPlus />
-        </button>
-        <button
-          className=" ml-5 p-2 bg-white rounded-full hover:shadow-lg transition-shadow"
-          onClick={() => removeFromCart(id)}
-        >
-          <FiTrash2 />
-        </button>
+      <div className="flex items-center justify-between  border-b p-4">
+        <img
+          className="max-w-[10%] aspect-square object-cover rounded-lg"
+          src={image}
+          alt={`${image} picture`}
+        />
+        <p>{name}</p>
+        <div className="flex items-center">
+          <button
+            disabled={orderedQuantity === 1}
+            onClick={handleReduceQuantity}
+            className="p-2 bg-white rounded-full hover:shadow-lg transition-shadow"
+          >
+            <FiMinus />
+          </button>
+          <span className=" px-9">{orderedQuantity}</span>
+          <button
+            disabled={orderedQuantity === stock}
+            onClick={handleRiseQuantity}
+            className="p-2 bg-white rounded-full hover:shadow-lg transition-shadow"
+          >
+            <FiPlus />
+          </button>
+          <button
+            className=" ml-5 p-2 bg-white rounded-full hover:shadow-lg transition-shadow"
+            onClick={() => handleRemoveFromCart(id)}
+          >
+            <FiTrash2 />
+          </button>
+        </div>
       </div>
-    </div>
   );
 };
 

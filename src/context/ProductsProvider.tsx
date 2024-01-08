@@ -78,13 +78,6 @@ const ProductsProvider: React.FC<{ children: React.ReactNode }> = ({
 
     setCurrentPrice(prevPrice => prevPrice - (currentProduct?.price + currentProduct?.orderedQuantity))
 
-    // setProductsList((prev) =>
-    //   prev.map((item) =>
-    //     item.id === productId
-    //       ? { ...item, orderedQuantity: (item.orderedQuantity = 0) }
-    //       : item
-    //   )
-    // );
   };
 
   const addToFavourites = (productId: number) => {

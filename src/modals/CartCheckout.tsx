@@ -33,11 +33,19 @@ const CartCheckout = ({
       Navigate(`/${filteredProduct?.id}`);
     }
     setIsModalOpen(false);
+    window.scrollTo({
+      top: 0,
+    });
   };
 
   const handleGoToCart = () => {
     Navigate("/cart");
+    window.scrollTo({
+      top: 0,
+    });
   };
+
+  
 
   return (
     <dialog
@@ -47,7 +55,7 @@ const CartCheckout = ({
       {filteredProduct && (
         <>
           <div className="flex flex-col items-center mb-4">
-            <img src={filteredProduct.image} alt="brand" className="mb-2" />
+            <img src={filteredProduct.image} alt="brand" className="mb-2 object-cover" />
             <h2 className="text-lg font-bold mt-2">{filteredProduct.name}</h2>
             <p className="text-gray-600 mt-2">{filteredProduct.description}</p>
             <p className="text-lg font-bold mt-2">
@@ -61,12 +69,14 @@ const CartCheckout = ({
             >
               Close
             </button>
-            <button
+            {location.pathname.startsWith(`/products/${filteredProduct?.id}`) ? null : (
+              <button
               onClick={handleGoToDetails}
               className="bg-primary text-white p-2 mt-3 rounded-md hover:bg-hoverColor focus:outline-none"
             >
               Check details
             </button>
+            )}
             <button
               onClick={handleGoToCart}
               className="bg-primary text-white p-2 mt-3 rounded-md hover:bg-hoverColor focus:outline-none"

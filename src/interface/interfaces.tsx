@@ -11,6 +11,19 @@ export interface Product {
     isBestseller:boolean;
     stock:number;
     orderedQuantity: number
+    opinions:Opinion[]
+}
+
+export interface CartProductProps extends Product {
+  handleRemoveFromCart: (id: number) => void;
+}
+
+
+export interface Opinion {
+  id: number;
+  name: string;
+  email: string;
+  opinionText: string;
 }
 
 export interface Links {
@@ -47,12 +60,25 @@ export interface ProductSearchIconProps {
     email: string;
     address: string;
     phoneNumber: string;
+    parcelPost: false;
+    stripe: false;
     comments: string
+  }
+
+  export interface CheckoutFormProps {
+    totalPrice: number;
+    finalPrice: number;
+    setFinalPrice: React.Dispatch<SetStateAction<number>>;
   }
 
   export interface SentDataModalProps {
     dataIsSent: boolean;
     setDataIsSent: Dispatch<SetStateAction<boolean>>;
+  }
+
+  export interface RemoveProductModalProps {
+    removeProductModal: boolean;
+    setRemoveProductModal: React.Dispatch<SetStateAction<boolean>>
   }
 
   export interface SubscribeConfirmationProps {
@@ -88,4 +114,11 @@ export interface ProductSearchIconProps {
     isModalOpen: boolean;
     setIsModalOpen: Dispatch<SetStateAction<boolean>>;
     id: number;
+  }
+
+
+  export interface OpinionFormProps {
+    productId:number;
+    productsList:Product[];
+    setProductsList: Dispatch<SetStateAction<Product[]>>
   }

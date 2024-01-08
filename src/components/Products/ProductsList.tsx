@@ -23,7 +23,7 @@ const ProductsList: React.FC = () => {
   if (productsList.length) {
     return (
       <>
-      <div className="grid place-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4  max-w-7xl mx-auto gap-y-10 p-10">
+      <div className="grid place-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  max-w-7xl mx-auto gap-y-10 p-10 animate-fade-down">
         {displayProducts}
       </div>
         <ReactPaginate
@@ -35,7 +35,7 @@ const ProductsList: React.FC = () => {
           previousLinkClassName={"bg-blue-500 text-white px-4 py-2 rounded"} 
           nextLinkClassName={"bg-blue-500 text-white px-4 py-2 rounded"} 
           disabledClassName={"text-gray-400 cursor-not-allowed"} 
-          activeClassName={"bg-blue-700 text-white"} 
+          activeClassName={"border text-primary p-2"} 
         />
       </>
     );

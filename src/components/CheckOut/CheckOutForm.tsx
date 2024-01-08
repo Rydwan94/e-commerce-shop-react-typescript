@@ -1,13 +1,15 @@
 import { useState } from "react";
 import { Formik, ErrorMessage, Form, Field } from "formik";
-import { CheckoutFormData } from "../../interface/interfaces";
+import { CheckoutFormData, CheckoutFormProps } from "../../interface/interfaces";
 import SentDataModal from "../../modals/SentDataModal";
 import { useProducts } from "../../context/ProductsProvider";
 import { useNavigate } from "react-router-dom";
 
-const CheckOutForm: React.FC = () => {
+const CheckOutForm = ({totalPrice,finalPrice, setFinalPrice}: CheckoutFormProps) => {
 
   const {setCart} = useProducts()
+
+  console.log(finalPrice)
 
     const [dataIsSent, setDataIsSent] = useState<boolean>(false)
 
@@ -34,11 +36,13 @@ const CheckOutForm: React.FC = () => {
     email: "",
     address: "",
     phoneNumber: "",
+    parcelPost: false,
+    stripe: false,
     comments: "",
   };
 
   return (
-    <div className="max-w-md mx-auto p-6 bg-white rounded-md shadow-md">
+    <div className="self-start basis-1/2 max-lg:w-full max-lg:mt-6 p-6 bg-lightGray1 rounded-md shadow-md">
     <h1 className="text-2xl font-bold mb-6">Payment Details</h1>
       <Formik
         initialValues={initialValues}
@@ -63,13 +67,24 @@ const CheckOutForm: React.FC = () => {
           if (!values.phoneNumber) {
             errors.phoneNumber = "Phone number is required";
           }
+          if (values.parcelPost === false) {
+            errors.parcelPost = "Please select a delivery method";
+            setFinalPrice(totalPrice);
+          } else {
+            setFinalPrice(totalPrice + 20);
+          }
+
+         
+          if (values.stripe === false) {
+            errors.stripe = "Please select payment method";
+          } 
 
           return errors;
         }}
         onSubmit={handleOnSubmit}
       >
         <Form>
-          <div>
+          <div className="mb-2">
             <label htmlFor="firstName">First Name</label>
             <Field
               type="text"
@@ -84,7 +99,7 @@ const CheckOutForm: React.FC = () => {
               className="text-red-700"
             />
           </div>
-          <div>
+          <div className="mb-2">
             <label htmlFor="lastName">Last Name</label>
             <Field
               type="text"
@@ -99,7 +114,7 @@ const CheckOutForm: React.FC = () => {
               className="text-red-700"
             />
           </div>
-          <div>
+          <div className="mb-2">
             <label htmlFor="email">Email</label>
             <Field type="text" id="email" name="email" placeholder="email" className="mt-1 p-2 border border-gray-300 rounded-md w-full"  />
             <ErrorMessage
@@ -108,7 +123,7 @@ const CheckOutForm: React.FC = () => {
               className="text-red-700"
             />
           </div>
-          <div>
+          <div className="mb-2">
             <label htmlFor="address">Address</label>
             <Field
               type="text"
@@ -123,7 +138,7 @@ const CheckOutForm: React.FC = () => {
               className="text-red-700"
             />
           </div>
-          <div>
+          <div className="mb-2">
             <label htmlFor="phoneNumber">Phone Number</label>
             <Field
               type="number"
@@ -138,8 +153,32 @@ const CheckOutForm: React.FC = () => {
               className="text-red-700"
             />
           </div>
-          <div>
-            <label htmlFor="comments">Delivery Comments</label>
+          <div className="flex flex-col mb-4">
+            Delivery methods
+            <label className="flex items-center gap-2" htmlFor="parcelPost">
+              Parcel Post (20 pln)
+              <Field type="checkbox" id="parcelPost" name="parcelPost" />
+            </label>
+            <ErrorMessage
+            name="parcelPost"
+            component="div"
+            className="text-red-700"
+            />
+          </div>
+          <div className="flex flex-col mb-4">
+            Payment methods
+            <label className="flex items-center gap-2" htmlFor="stripe">
+              Stripe
+              <Field type="checkbox" id="stripe" name="stripe" />
+            </label>
+            <ErrorMessage
+            name="stripe"
+            component="div"
+            className="text-red-700"
+            />
+          </div>
+          <div className="mb-2">
+            <label className="flex items-center gap-2" htmlFor="comments">Delivery Comments</label>
             <Field
               as="textarea"
               id="comments"
@@ -153,7 +192,7 @@ const CheckOutForm: React.FC = () => {
               className="text-red-700"
             />
           </div>
-          <button type="submit">Submit</button>
+          <button className="animate-pulse bg-primary p-2 text-white rounded-md hover:bg-hoverColor transition-all" type="submit">Submit</button>
         </Form>
       </Formik>
       <SentDataModal dataIsSent={dataIsSent} setDataIsSent={setDataIsSent} />

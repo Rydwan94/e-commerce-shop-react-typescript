@@ -11,10 +11,13 @@ const ThirdBanner = () => {
     const viewProduct = () => {
       setProductsList(products)
         navigate(`/products/${12}`)
+        window.scrollTo({
+          top: 0,
+        });
     }
 
   return (
-    <div className='flex justify-evenly items-center w-screen lg:flex-row-reverse max-lg:flex-col pt-20 '>
+    <div className='flex justify-evenly items-center w-full lg:flex-row-reverse max-lg:flex-col pt-20 '>
     <div className='flex flex-col justify-center items-center text-lightTextColor px-5'>
         <h3 className='text-2xl text-mutedTextColor text-center'>Summer 2024</h3>
         <h2 className='text-5xl text-center text-textColor my-11'>Trendy Jeans</h2>

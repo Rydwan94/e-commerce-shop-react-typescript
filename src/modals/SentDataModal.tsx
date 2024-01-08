@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import { SentDataModalProps } from "../interface/interfaces";
+import {ModalDataProps } from "../interface/interfaces";
 
-const SentDataModal = ({ dataIsSent, setDataIsSent }: SentDataModalProps) => {
+const SentDataModal = ({ dataIsSent, setDataIsSent }: ModalDataProps) => {
   const modalRef = useRef<HTMLDialogElement | null>(null);
   const [modalTime, setModalTime] = useState<number>(100);
 

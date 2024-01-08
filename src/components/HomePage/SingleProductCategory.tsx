@@ -14,6 +14,11 @@ const SingleProductCategory = ({classProp, src, buttonMessage}: ProductCategory)
   const viewCategory = () => {
     setCategoryFilter("All")
     navigate("/products")
+
+    window.scrollTo({
+      top: 100,
+    });
+
     setProductsList(
       products.filter((product) => product.category === buttonMessage)
     );

@@ -13,7 +13,8 @@ export const products: Product[] = [
     isFavourite: false,
     isBestseller: true,
     stock: 10,
-    orderedQuantity: 1
+    orderedQuantity: 1,
+    opinions: []
   },
   {
     id: 2,
@@ -25,7 +26,8 @@ export const products: Product[] = [
     isFavourite: false,
     isBestseller: false,
     stock: 15,
-    orderedQuantity: 1
+    orderedQuantity: 1,
+    opinions: []
   },
   {
     id: 3,
@@ -37,7 +39,8 @@ export const products: Product[] = [
     isFavourite: false,
     isBestseller: false,
     stock: 20,
-    orderedQuantity: 1
+    orderedQuantity: 1,
+    opinions: []
   },
   {
     id: 4,
@@ -49,7 +52,8 @@ export const products: Product[] = [
     isFavourite: false,
     isBestseller: true,
     stock: 15,
-    orderedQuantity: 1
+    orderedQuantity: 1,
+    opinions: []
   },
   {
     id: 5,
@@ -61,7 +65,8 @@ export const products: Product[] = [
     isFavourite: false,
     isBestseller: true,
     stock: 12,
-    orderedQuantity: 1
+    orderedQuantity: 1,
+    opinions: []
   },
   {
     id: 6,
@@ -73,7 +78,8 @@ export const products: Product[] = [
     isFavourite: false,
     isBestseller: true,
     stock: 18,
-    orderedQuantity: 1
+    orderedQuantity: 1,
+    opinions: []
   },
   {
     id: 7,
@@ -85,7 +91,8 @@ export const products: Product[] = [
     isFavourite: false,
     isBestseller: false,
     stock: 25,
-    orderedQuantity: 1
+    orderedQuantity: 1,
+    opinions: []
   },
   {
     id: 8,
@@ -97,7 +104,8 @@ export const products: Product[] = [
     isFavourite: false,
     isBestseller: false,
     stock: 8,
-    orderedQuantity: 1
+    orderedQuantity: 1,
+    opinions: []
   },
   {
     id: 9,
@@ -109,7 +117,8 @@ export const products: Product[] = [
     isFavourite: false,
     isBestseller: false,
     stock: 10,
-    orderedQuantity: 1
+    orderedQuantity: 1,
+    opinions: []
   },
   {
     id: 10,
@@ -121,7 +130,8 @@ export const products: Product[] = [
     isFavourite: false,
     isBestseller: false,
     stock: 5,
-    orderedQuantity: 1
+    orderedQuantity: 1,
+    opinions: []
   },
   {
     id: 11,
@@ -133,7 +143,8 @@ export const products: Product[] = [
     isFavourite: false,
     isBestseller: true,
     stock: 30,
-    orderedQuantity: 1
+    orderedQuantity: 1,
+    opinions: []
   },
   {
     id: 12,
@@ -145,7 +156,8 @@ export const products: Product[] = [
     isFavourite: false,
     isBestseller: false,
     stock: 20,
-    orderedQuantity: 1
+    orderedQuantity: 1,
+    opinions: []
   },
   {
     id: 13,
@@ -157,7 +169,8 @@ export const products: Product[] = [
     isFavourite: false,
     isBestseller: true,
     stock: 25,
-    orderedQuantity: 1
+    orderedQuantity: 1,
+    opinions: []
   },
   
 ];
