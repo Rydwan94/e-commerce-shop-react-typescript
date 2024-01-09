@@ -26,7 +26,7 @@ const CategoryFilter = () => {
 
   return (
     <>
-      <div className="my-11 bg-lightGray2 lg:p-16 max-md:p-10 md:p-10 ">
+      <div className="my-11 bg-lightGray2 lg:p-16 max-md:p-5 md:p-5 ">
         <div className="flex lg:justify-center space-x-4 snap-x snap-mandatory overflow-x-scroll md:no-scrollbar ">
           {categoryCards.map((item, i) => (
             <CategoryCard key={i} {...item} />

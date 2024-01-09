@@ -172,5 +172,18 @@ export const products: Product[] = [
     orderedQuantity: 1,
     opinions: []
   },
+  {
+    id: 14,
+    name: 'Pokeball',
+    description: 'The Pokeball is an exciting toy inspired by the popular world of Pokemon.',
+    price: 20.99,
+    image: 'https://images.pexels.com/photos/7772559/pexels-photo-7772559.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    category: 'Toys',
+    isFavourite: false,
+    isBestseller: true,
+    stock: 35,
+    orderedQuantity: 1,
+    opinions: []
+  },
   
 ];

@@ -17,7 +17,6 @@ const CartIcon = ({
 
   useEffect(() => {
     const cartSummary = cart.reduce((initalValue, currentProduct) => {
-      console.log(currentProduct.price )
       return initalValue + (currentProduct.price /currentProduct.orderedQuantity) * currentProduct.orderedQuantity;
     }, 0);
 
@@ -28,6 +27,14 @@ const CartIcon = ({
     setIsOpenCart(!isOpenCart);
     setExpandSearcher(false);
     
+    if(cart.length === 0) {
+      setTimeout(() => {
+        setIsOpenCart(false)
+      }, 1000)
+    }
+
+    console.log(isOpenCart)
+
   };
 
   const handleGoToCart = () => {
