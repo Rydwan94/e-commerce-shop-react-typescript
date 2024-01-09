@@ -16,6 +16,9 @@ const CategoryCard = ({ src, category }: CategoryCardProps) => {
         if(category === "All"){
             setProductsList(products.filter(product => product))
         }else setProductsList(products.filter(product => product.category === category) )   
+
+        window.scroll({top: 300})
+
     }
 
 

@@ -9,7 +9,7 @@ const CartIcon = ({
   setIsOpenCart,
   setExpandSearcher,
 }: CartIconProps) => {
-  const { cart, currentPrice, setCurrentPrice,addToCart } = useProducts();
+  const { cart, currentPrice, setCurrentPrice, addToCart } = useProducts();
 
   const cartInfoRef = useRef<HTMLInputElement | null>(null);
 
@@ -17,24 +17,27 @@ const CartIcon = ({
 
   useEffect(() => {
     const cartSummary = cart.reduce((initalValue, currentProduct) => {
-      return initalValue + (currentProduct.price /currentProduct.orderedQuantity) * currentProduct.orderedQuantity;
+      return (
+        initalValue +
+        (currentProduct.price / currentProduct.orderedQuantity) *
+          currentProduct.orderedQuantity
+      );
     }, 0);
 
     setCurrentPrice(cartSummary);
-  },[addToCart])
+  }, [addToCart]);
 
   const handleOpenCart = (): void => {
     setIsOpenCart(!isOpenCart);
     setExpandSearcher(false);
-    
-    if(cart.length === 0) {
+
+    if (cart.length === 0) {
       setTimeout(() => {
-        setIsOpenCart(false)
-      }, 1000)
+        setIsOpenCart(false);
+      }, 1000);
     }
 
-    console.log(isOpenCart)
-
+    console.log(isOpenCart);
   };
 
   const handleGoToCart = () => {
@@ -45,11 +48,8 @@ const CartIcon = ({
       window.scroll({
         top: 0,
       });
-    },50)
+    }, 100);
   };
-
- 
-
 
   return (
     <div className="relative">
@@ -91,13 +91,16 @@ const CartIcon = ({
                 </div>
               ))}
               <div className="flex flex-col-reverse items-center pt-4">
-              <button
-                onClick={handleGoToCart}
-                className="bg-primary text-white rounded-md p-1 mt-2 hover:bg-hoverColor transition-alll"
-              >
-                Go to cart
-              </button>
-              <p>Sum : <span className="font-bold">{currentPrice.toFixed(2)}</span></p>
+                <button
+                  onClick={handleGoToCart}
+                  className="bg-primary text-white rounded-md p-1 mt-2 hover:bg-hoverColor transition-alll"
+                >
+                  Go to cart
+                </button>
+                <p>
+                  Sum :{" "}
+                  <span className="font-bold">{currentPrice.toFixed(2)}</span>
+                </p>
               </div>
             </div>
           ) : (
