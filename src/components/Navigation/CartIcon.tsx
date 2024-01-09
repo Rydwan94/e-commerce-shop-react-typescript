@@ -33,6 +33,12 @@ const CartIcon = ({
   const handleGoToCart = () => {
     Navigate("/cart");
     setIsOpenCart(false);
+
+    setTimeout(() => {
+      window.scroll({
+        top: 0,
+      });
+    },50)
   };
 
  

@@ -10,7 +10,7 @@ const ProductCategory = () => {
       <p className="text-secondTextColor mt-5">
         Problems trying to resolve the conflict between{" "}
       </p>
-      <div className="grid grid-cols-7 grid-rows-6 gap-4  mt-10 max-md:flex max-md:snap-x max-md:snap-mandatory max-md:overflow-x-scroll max-md:p-4 max-md:bg-lightGray2">
+      <div className="grid grid-cols-7 grid-rows-6 gap-4  mt-10 max-md:flex max-md:snap-x max-md:snap-mandatory max-md:overflow-x-scroll   max-md:p-4 max-md:bg-lightGray2">
         {ProductCategoryImages.map((item) => (
           <SingleProductCategory key={item.id} {...item} />
         ))}

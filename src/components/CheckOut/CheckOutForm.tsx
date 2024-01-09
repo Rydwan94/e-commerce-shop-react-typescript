@@ -29,6 +29,12 @@ const CheckOutForm = ({totalPrice,finalPrice, setFinalPrice}: CheckoutFormProps)
     setCart([])
     resetForm();
     handleGoToConfimartion()
+
+    setTimeout(() => {
+      window.scroll({
+        top: 0,
+      });
+    },50)
   };
   const initialValues: CheckoutFormData = {
     firstName: "",

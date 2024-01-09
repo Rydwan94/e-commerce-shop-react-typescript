@@ -20,6 +20,7 @@ const CartCheckout = ({
     if (isModalOpen && dialogRef.current) {
       dialogRef.current.showModal();
     } else dialogRef.current?.close();
+
   }, [isModalOpen]);
 
   const handleCloseModal = () => {
@@ -27,55 +28,68 @@ const CartCheckout = ({
   };
 
   const handleGoToDetails = () => {
+  if (filteredProduct) {
     if (location.pathname.startsWith("/")) {
-      Navigate(`/products/${filteredProduct?.id}`);
+      Navigate(`/products/${filteredProduct.id}/description`);
     } else if (location.pathname.startsWith("/products")) {
-      Navigate(`/${filteredProduct?.id}`);
+      Navigate(`/${filteredProduct.id}/description`);
     }
     setIsModalOpen(false);
-    window.scrollTo({
+    
+    setTimeout(() => {
+      window.scroll({
+        top: 0,
+      });
+    },50)
+  }
+};
+
+const handleGoToCart = () => {
+  Navigate("/cart");
+  setTimeout(() => {
+    window.scroll({
       top: 0,
     });
-  };
-
-  const handleGoToCart = () => {
-    Navigate("/cart");
-    window.scrollTo({
-      top: 0,
-    });
-  };
-
-  
+  },50)
+};
 
   return (
     <dialog
       ref={dialogRef}
-      className={`fixed max-md:max-w-[50%] rounded-md shadow-md top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 max-w-[30%] p-4 animate-fade-in-down`}
+      className={`fixed max-md:max-w-[70%] rounded-xl shadow-md top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 max-w-[30%] animate-fade-in-down`}
     >
       {filteredProduct && (
         <>
           <div className="flex flex-col items-center mb-4">
-            <img src={filteredProduct.image} alt="brand" className="mb-2 object-cover" />
+            <div className="w-full">
+              <img
+                src={filteredProduct.image}
+                alt="brand"
+                className="mb-2 object-cover aspect-square w-full"
+              />
+            </div>
             <h2 className="text-lg font-bold mt-2">{filteredProduct.name}</h2>
-            <p className="text-gray-600 mt-2">{filteredProduct.description}</p>
+            <p className="text-gray-600 mt-2 text-center">{filteredProduct.description}</p>
             <p className="text-lg font-bold mt-2">
               ${filteredProduct.price.toFixed(2)}
             </p>
           </div>
-          <div className="flex flex-col justify-evenly">
+          <div className="flex flex-col justify-evenly p-3">
             <button
               onClick={handleCloseModal}
               className="bg-primary text-white p-2 rounded-md hover:bg-hoverColor focus:outline-none"
             >
               Close
             </button>
-            {location.pathname.startsWith(`/products/${filteredProduct?.id}`) ? null : (
+            {location.pathname.startsWith(
+              `/products/${filteredProduct?.id}`
+            ) ? null : (
               <button
-              onClick={handleGoToDetails}
-              className="bg-primary text-white p-2 mt-3 rounded-md hover:bg-hoverColor focus:outline-none"
-            >
-              Check details
-            </button>
+                onClick={handleGoToDetails}
+                className="bg-primary text-white p-2 mt-3 rounded-md hover:bg-hoverColor focus:outline-none"
+              >
+                Check details
+              </button>
             )}
             <button
               onClick={handleGoToCart}

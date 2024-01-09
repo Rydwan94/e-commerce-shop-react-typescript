@@ -52,15 +52,15 @@ const SingleProduct: React.FC<Product> = ({
   const findProduct = cart.find((item) => item.id === id);
 
   const handleScrollToTop = () => {
-    window.scrollTo({ top: 0 });
+    window.scroll({ top: 0 });
   }
 
   return (
     <>
-      <figure className="group w-[80%] lg:w-[90%] max-md:min-w-[90%] bg-lightGray1 shadow-lg rounded-xl">
+      <figure className="group w-[80%] lg:w-[90%] max-md:min-w-[60%] bg-lightGray1 shadow-lg rounded-xl">
         <div className="relative overflow-hidden rounded-xl">
           {isBestseller && <div className=" absolute top-3 left-2 p-3 bg-dangerColor text-lightTextColor rounded-2xl">Bestseller</div>}
-          <img className="aspect-square object-cover max-md:w-full max-md:max-h-64" src={image} alt={name} />
+          <img className="aspect-square object-cover max-md:w-full max-md:max-h-80" src={image} alt={name} />
           <div className="flex justify-center items-center gap-3 h-0 w-full group-hover:h-[70px]  absolute bottom-0 left-0 bg-black opacity-50 overflow-hidden transition-all duration-500">
             <button onClick={viewProductDetails} className="p-3 rounded-full bg-lightBackgroundColor text-textColor my-3">
               <FaEye size={25} />

@@ -10,6 +10,12 @@ const CartSummary = () => {
 
   const handleGoToPayment = () => {
     Navigate("/checkout")
+
+    setTimeout(() => {
+      window.scroll({
+        top: 0,
+      });
+    },50)
   }
   return (
     <div className="sticky bottom-0 flex justify-between items-center p-12 bg-lightBackgroundColor min-w-full border-b max-md:text-sm">

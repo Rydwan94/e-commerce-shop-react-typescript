@@ -10,10 +10,12 @@ const ThirdBanner = () => {
 
     const viewProduct = () => {
       setProductsList(products)
-        navigate(`/products/${12}`)
-        window.scrollTo({
-          top: 0,
-        });
+        navigate(`/products/${12}/description`)
+        setTimeout(() => {
+          window.scroll({
+            top: 0,
+          });
+        },50)
     }
 
   return (

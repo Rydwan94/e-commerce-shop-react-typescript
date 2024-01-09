@@ -12,11 +12,12 @@ const SecondBanner = () => {
 
     const handleViewProduct = () => {
         setProductsList(products)
-        navigate(`/products/${11}`)
-        window.scrollTo({
+        navigate(`/products/${11}/description`)
+        setTimeout(() => {
+          window.scroll({
             top: 0,
           });
-        
+        },50)
     }   
 
   return (
