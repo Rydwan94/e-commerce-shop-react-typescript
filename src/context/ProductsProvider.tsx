@@ -6,7 +6,7 @@ import { useFilter } from "./FilterProductsProvider";
 interface ProductsContextProps {
   currentPrice: number;
   setCurrentPrice:React.Dispatch<React.SetStateAction<number>>
-  cart: Product[] ;
+  cart: Product[];
   setCart: React.Dispatch<React.SetStateAction<Product[]>>;
   productsList: Product[];
   setProductsList: React.Dispatch<React.SetStateAction<Product[]>>;
@@ -73,10 +73,13 @@ const ProductsProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const removeFromCart = (productId: number) => {
     const currentProduct = cart.find(product => product.id === productId)
-    const newProducts = cart.filter((product) => product.id !== productId);
+    
+    if(currentProduct){
+      const newProducts = cart.filter((product) => product.id !== productId);
     setCart(newProducts);
 
     setCurrentPrice(prevPrice => prevPrice - (currentProduct?.price + currentProduct?.orderedQuantity))
+    }
 
   };
 

@@ -1,4 +1,3 @@
-import React from "react";
 import Slider from "react-slick";
 import { mainBanerImages } from "../../constants/Images";
 import "slick-carousel/slick/slick.css";
