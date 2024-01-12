@@ -4,6 +4,7 @@ import Pages from "./layouts/Pages";
 import ProductsProvider from "./context/ProductsProvider";
 import FilterProductsProvider from "./context/FilterProductsProvider";
 import Footer from "./layouts/Footer";
+import ScrollToTopButton from "./components/ScrollToTopButton";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <footer className="w-full mt-24">
               <Footer/>
             </footer>
+            <ScrollToTopButton />
           </div>
         </ProductsProvider>
       </FilterProductsProvider>

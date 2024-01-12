@@ -1,4 +1,4 @@
-import { ProductCategoryImages } from "../../constants/Images";
+import { ProductCategoryImages } from "../../constants/Produc tsCategoryImages";
 import SingleProductCategory from "./SingleProductCategory";
 
 const ProductCategory = () => {
@@ -15,6 +15,7 @@ const ProductCategory = () => {
           <SingleProductCategory key={item.id} {...item} />
         ))}
       </div>
+      <div className="overflow-hidden"></div>
     </div>
   );
 };

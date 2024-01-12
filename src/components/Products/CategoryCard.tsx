@@ -17,7 +17,9 @@ const CategoryCard = ({ src, category }: CategoryCardProps) => {
             setProductsList(products.filter(product => product))
         }else setProductsList(products.filter(product => product.category === category) )   
 
-        window.scroll({top: 300})
+        setTimeout(() => {
+          window.scroll({top:300})
+        },200)
 
     }
 

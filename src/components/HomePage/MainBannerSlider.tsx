@@ -1,9 +1,10 @@
 import Slider from "react-slick";
-import { mainBanerImages } from "../../constants/Images";
+import { mainBanerImages } from "../../constants/Produc tsCategoryImages";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import NextArrow from "./NextArrow";
 import PrevArrow from "./PrevArrow";
+import { useNavigate } from "react-router-dom";
 
 const MainBannerSlider = () => {
   const settings = {
@@ -16,6 +17,12 @@ const MainBannerSlider = () => {
     prevArrow: <PrevArrow />,
   };
 
+  const Navigate = useNavigate()
+
+  const viewOffer = () => {
+    Navigate('/products')
+  }
+
   return (
     <Slider {...settings} className="relative">
       {mainBanerImages.map((imagePath, index) => (
@@ -25,7 +32,7 @@ const MainBannerSlider = () => {
             src={imagePath}
             alt={`Banner ${index + 1}`}
           />
-          <button className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-third1 text-white shadow-lg p-1 rounded-lg animate-fade-in-down">
+          <button onClick={viewOffer} className="absolute top-3/4 left-1/4 transform -translate-x-1/2 -translate-y-1/2 bg-lightBackground text-4xl md:text-xl max-md:text-base max-md:left-16 text-textColor shadow-lg p-1 rounded-lg animate-bounce cursor-pointer">
             Buy Now!
           </button>
         </div>

@@ -23,7 +23,7 @@ const NavLinks: React.FC<Menu> = ({ isOpenMenu, handleMenu, setMenuAsClosed }) =
             <NavLink
             onClick={setMenuAsClosed}
               to={link.path}
-              className="hover:text-lightTextColor hover:bg-secondTextColor transition-all p-2 rounded-2xl"
+              className="hover:text-lightTextColor hover:bg-hoverColor transition-all p-2 rounded-2xl"
             >
               {link.label}
             </NavLink>

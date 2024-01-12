@@ -12,25 +12,25 @@ export const mainBanerImages = [Image1, Image2];
 export const ProductCategoryImages = [
     {
         id:0,
-        classProp: "relative col-span-3 row-span-6 max-md:min-w-[50%]",
+        classProp: "relative overflow-hidden cursor-pointer col-span-3 row-span-6 max-md:min-w-[50%]",
         buttonMessage: "Clothes",
         src: clothes
     },
     {
         id:1,
-        classProp: "relative col-span-2 row-span-6 col-start-4 max-md:min-w-[50%] ",
+        classProp: "relative overflow-hidden cursor-pointer col-span-2 row-span-6 col-start-4 max-md:min-w-[50%] ",
         buttonMessage: "Electronics",
         src: electronics,
     },
     {
         id:2,
-        classProp: "relative col-span-2 row-span-3 col-start-6 max-md:min-w-[50%]",
+        classProp: "relative overflow-hidden cursor-pointer col-span-2 row-span-3 col-start-6 max-md:min-w-[50%]",
         buttonMessage: "Toys",
         src: toys
     },
     {
         id:3,
-        classProp:"relative col-span-2 row-span-3 col-start-6 row-start-4 max-md:min-w-[50%]",
+        classProp:"relative overflow-hidden cursor-pointer col-span-2 row-span-3 col-start-6 row-start-4 max-md:min-w-[50%]",
         buttonMessage: "Appliances",
         src: appliances
     }

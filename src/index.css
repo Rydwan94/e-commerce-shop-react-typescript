@@ -71,7 +71,7 @@ html{
 .active {
     color: var(--light-text-color);
     padding: 2;
-    background-color: var(--second-text-color);
+    background-color: var(--hover-color);
     box-shadow: 0 3px 5px 0 var(--primary-2);
 }
 

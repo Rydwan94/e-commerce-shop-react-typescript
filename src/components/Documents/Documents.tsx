@@ -6,12 +6,12 @@ import DocumentsPages from "../../pages/Documents/DocumentsPages"
 
 const Documents = () => {
   return (
-    <div>
+    <>
         <DocumentsNav/>
         <div>
             <DocumentsPages />
         </div>
-    </div>
+    </>
   )
 }
 

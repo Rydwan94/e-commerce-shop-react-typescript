@@ -29,9 +29,9 @@ const SingleProductCategory = ({classProp, src, buttonMessage}: ProductCategory)
 
 
   return (
-    <div className={classProp}>
-        <img className='w-full h-full max-md:h-[250px] max-md:max-w-[100%]  object-cover rounded-xl'  src={src} alt={buttonMessage} />
-        <button onClick={viewCategory} className='absolute bottom-7 left-7 rounded-md text-textColor font-bold bg-lightBackgroundColor p-3'>{buttonMessage}</button>
+    <div onClick={viewCategory} className={classProp}>
+        <img className='w-full h-full max-md:h-[250px] max-md:max-w-[100%]  object-cover rounded-xl hover:scale-125 transition-all duration-500'  src={src} alt={buttonMessage} />
+        <p className='absolute bottom-7 left-7 rounded-md text-textColor font-bold bg-lightBackgroundColor p-3'>{buttonMessage}</p>
     </div>
   )
 }

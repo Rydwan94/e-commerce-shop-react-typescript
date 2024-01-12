@@ -13,8 +13,8 @@ const ProductSearchIcon = ({
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
-    inputRef.current?.focus()
-  },[expandSearcher])
+    inputRef.current?.focus();
+  }, [expandSearcher]);
 
   const Navigate = useNavigate();
 
@@ -32,24 +32,22 @@ const ProductSearchIcon = ({
   };
 
   const handleSearchProduct = () => {
-    Navigate('/products')
+    Navigate("/products");
     searchProduct();
   };
-
 
   return (
     <div className="relative">
       <div className="cursor-pointer" onClick={handleExpandSearcher}>
         <IoSearchOutline size={27} />
       </div>
-      {
+      {expandSearcher && (
         <div
-          
-          className={`flex absolute top-[170%] right-[10%] p-2 shadow-2xl bg-white transition-all ${
-            expandSearcher ? "animate-jump-in" : "animate-jump-out"
-          }`}
+          className={`flex absolute top-[170%] right-[10%] p-2 shadow-2xl bg-white transition-all animate-jump-in 
+          `}
         >
           <input
+            className="focus:border-none"
             ref={inputRef}
             type="text"
             placeholder="search product...."
@@ -60,7 +58,7 @@ const ProductSearchIcon = ({
             <IoSearchOutline size={24} color="black" />
           </button>
         </div>
-      }
+      )}
     </div>
   );
 };

@@ -62,6 +62,7 @@ const ProductDetails: React.FC = () => {
 
   const handleGoToCart = () => {
     Navigate("/cart");
+    window.scroll({ top: 0 });
   };
 
   const handleAddToCart = (product: Product) => {
@@ -81,7 +82,7 @@ const ProductDetails: React.FC = () => {
           <img
             src={product.image}
             alt={product.name}
-            className="w-[30%] max-md:w-[50%] md:w-[40%] rounded-lg md:mr-7"
+            className="max-w-[30%] max-md:w-[50%] md:w-[40%] rounded-lg md:mr-7"
           />
           <div className="flex flex-col justify-between max-md:items-center max-md:mt-7">
             <div className="max-md:flex max-md:flex-col max-md:items-center">
@@ -96,7 +97,9 @@ const ProductDetails: React.FC = () => {
               <p className="text-gray-600 mb-4 max-md:text-center max-md:mt-5 ">
                 {product.description}
               </p>
-              <div className="flex items-center ">
+              {
+                productExistInCart ? null : (
+                  <div className="flex items-center ">
                 <button
                   disabled={product.orderedQuantity === 1}
                   onClick={handleReduceQuantity}
@@ -106,13 +109,18 @@ const ProductDetails: React.FC = () => {
                 </button>
                 <span className="mx-4">{product.orderedQuantity}</span>
                 <button
-                  disabled={product.orderedQuantity === product.stock}
+                  disabled={
+                    product.orderedQuantity === product.stock ||
+                    productExistInCart !== undefined
+                  }
                   onClick={handleRiseQuantity}
                   className="bg-lightBackgroundColor rounded-full p-2 hover:shadow-lg transition-shadow"
                 >
                   <FiPlus />
                 </button>
               </div>
+                )
+              }
             </div>
             <div className="flex items-center max-md:mt-5 md:mt-5 ">
               {productExistInCart ? (

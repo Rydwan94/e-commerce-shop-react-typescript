@@ -62,51 +62,50 @@ const CartIcon = ({
             {cart.length}
           </div>
         )}
-
-        <div
-          ref={cartInfoRef}
-          className={`absolute top-[52px] right-0 min-w-max bg-white text-black p-3 shadow-lg ${
-            isOpenCart ? "animate-fade-down" : "animate-jump-out"
-          }`}
-        >
-          {cart.length > 0 ? (
-            <div>
-              {cart.map((product) => (
-                <div
-                  className="flex flex-col justify-evenly items-start border-b"
-                  key={product.id}
-                >
-                  <div className="flex justify-between items-center min-w-full py-2">
-                    <p>{product.name}</p>
-                    <div className="ml-4">
-                      <p className="text-textColor">
-                        Qunatity:{" "}
-                        <span className="font-bold">
-                          {product.orderedQuantity}
-                        </span>
-                      </p>
-                      <p>Price: {product.price.toFixed(2)}</p>
+        {isOpenCart && (
+          <div
+            ref={cartInfoRef}
+            className={`absolute top-[52px] right-0 min-w-max bg-white text-black p-3 shadow-lg animate-jump-in`}
+          >
+            {cart.length > 0 ? (
+              <div>
+                {cart.map((product) => (
+                  <div
+                    className="flex flex-col justify-evenly items-start border-b"
+                    key={product.id}
+                  >
+                    <div className="flex justify-between items-center min-w-full py-2">
+                      <p>{product.name}</p>
+                      <div className="ml-4">
+                        <p className="text-textColor">
+                          Qunatity:{" "}
+                          <span className="font-bold">
+                            {product.orderedQuantity}
+                          </span>
+                        </p>
+                        <p>Price: {product.price.toFixed(2)}</p>
+                      </div>
                     </div>
                   </div>
+                ))}
+                <div className="flex flex-col-reverse items-center pt-4">
+                  <button
+                    onClick={handleGoToCart}
+                    className="bg-primary text-white rounded-md p-1 mt-2 hover:bg-hoverColor transition-alll"
+                  >
+                    Go to cart
+                  </button>
+                  <p>
+                    Sum :{" "}
+                    <span className="font-bold">{currentPrice.toFixed(2)}</span>
+                  </p>
                 </div>
-              ))}
-              <div className="flex flex-col-reverse items-center pt-4">
-                <button
-                  onClick={handleGoToCart}
-                  className="bg-primary text-white rounded-md p-1 mt-2 hover:bg-hoverColor transition-alll"
-                >
-                  Go to cart
-                </button>
-                <p>
-                  Sum :{" "}
-                  <span className="font-bold">{currentPrice.toFixed(2)}</span>
-                </p>
               </div>
-            </div>
-          ) : (
-            <p>You dont have any product in cart</p>
-          )}
-        </div>
+            ) : (
+              <p>You dont have any product in cart</p>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );
