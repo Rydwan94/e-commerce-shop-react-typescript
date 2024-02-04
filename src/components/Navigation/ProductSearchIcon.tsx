@@ -47,14 +47,14 @@ const ProductSearchIcon = ({
           `}
         >
           <input
-            className="focus:border-none"
+            className="focus:border-sky-100 text-textColor"
             ref={inputRef}
             type="text"
             placeholder="search product...."
             value={searchValue}
             onChange={handleInput}
           />
-          <button onClick={handleSearchProduct} className="cursor-pointer">
+          <button onClick={handleSearchProduct} className="cursor-pointer ml-1">
             <IoSearchOutline size={24} color="black" />
           </button>
         </div>

@@ -11,7 +11,7 @@ const SingleDocument: React.FC = () => {
 
   if (!document) {
     return (
-      <div className="flex justify-center min-h-screen text-2xl font-bold mt-12 animate-fade-right ">
+      <div className="flex justify-center min-h-screen lg:text-5xl max-lg:text-2xl font-bold mt-16 animate-fade-right ">
         <RiMessage2Line className="mr-2" />
         Help Center
       </div>

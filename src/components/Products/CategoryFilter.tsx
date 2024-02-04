@@ -49,6 +49,7 @@ const CategoryFilter = () => {
             <option value="Electronics">Electronics</option>
             <option value="Appliances">Appliances</option>
             <option value="Clothes">Clothes</option>
+            <option value="Toys">Toys</option>
           </select>
           <button
             className="p-2 bg-primary text-lightTextColor rounded-lg ml-3 hover:bg-hoverColor transition-all"

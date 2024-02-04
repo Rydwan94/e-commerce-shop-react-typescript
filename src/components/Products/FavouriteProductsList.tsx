@@ -23,9 +23,9 @@ const FavouriteProductsList = () => {
     );
   }
   return (
-    <div className="flex flex-col justify-center items-center w-full min-h-screen ">
+    <div className="flex flex-col justify-center items-center w-full min-h-screen animate-jump-in ">
       <h2 className="text-3xl">You dont have any favourite products</h2>
-      <button onClick={handleNavigate} className="bg-black text-white p-2 rounded-lg mt-5 animate-bounce">Go to products</button>
+      <button onClick={handleNavigate} className="bg-primary text-white p-2 rounded-lg mt-5">Go to products</button>
     </div>
   );
 };
